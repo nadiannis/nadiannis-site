@@ -1,0 +1,30 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '🎨🧪🔨 Styling, testing, and building the project before committing 🎨🧪🔨';
+
+# Check eslint standards
+npm run lint:check ||
+(
+  echo '🙁🙁 ESLint check failed. Make the required changes listed above, add changes, and try to commit again. 🙁🙁';
+  false;
+)
+
+# Check prettier standards
+npm run prettier:check ||
+(
+  echo '🙁🙁 Prettier check failed. Run npm run prettier:format or yarn prettier:format, add changes, and try to commit again. 🙁🙁';
+  false;
+)
+
+# If everything passes, try to build the project
+echo '🙂🙂 Code looks good, trying to build now. 🙂🙂';
+
+npm run build ||
+(
+  echo '❌🔨 Next build failed. View the errors to find out why. ❌🔨';
+  false;
+)
+
+# If it builds, we can commit
+echo '✅✅ All good. I am committing this now. ✅✅'; 
