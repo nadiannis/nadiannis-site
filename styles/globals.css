@@ -1,16 +1,74 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-base: 247, 248, 255;
+    --color-main: 27, 28, 33;
+    --color-main-inverted: 237, 239, 247;
+    --color-secondary: 129, 134, 161;
+    --color-secondary-inverted: 182, 187, 207;
+    --color-muted: 85, 88, 105;
+    --color-shade-1: 237, 239, 247;
+    --color-shade-2: 233, 234, 242;
+  }
+
+  @font-face {
+    font-family: 'Graphik';
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/Graphik/regular.woff2') format('woff2'),
+      url('/fonts/Graphik/regular.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Graphik';
+    font-weight: 600;
+    font-display: swap;
+    src: url('/fonts/Graphik/semibold.woff2') format('woff2'),
+      url('/fonts/Graphik/semibold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'GreycliffCF';
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/GreycliffCF/bold.woff2') format('woff2'),
+      url('/fonts/GreycliffCF/bold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'GreycliffCF';
+    font-weight: 800;
+    font-display: swap;
+    src: url('/fonts/GreycliffCF/extrabold.woff2') format('woff2'),
+      url('/fonts/GreycliffCF/extrabold.woff') format('woff');
+  }
+
+  html,
+  body {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.1;
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+.theme-dark {
+  --color-base: 27, 28, 33;
+  --color-main: 237, 239, 247;
+  --color-main-inverted: 237, 239, 247;
+  --color-secondary: 182, 187, 207;
+  --color-secondary-inverted: 182, 187, 207;
+  --color-muted: 193, 198, 219;
+  --color-shade-1: 38, 40, 48;
+  --color-shade-2: 0, 0, 0;
 }
