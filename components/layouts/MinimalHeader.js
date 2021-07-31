@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTheme } from '../../store/themeContext';
 
 import Container from '../ui/Container';
 
 export default function MinimalHeader() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <header className="py-3">
       <Container>
@@ -13,9 +16,9 @@ export default function MinimalHeader() {
               nadiannis
             </a>
           </Link>
-          <button type="button" className="w-7 h-7">
+          <button type="button" className="w-7 h-7" onClick={toggleTheme}>
             <Image
-              src="/static/icons/dark-mode-btn.svg"
+              src={`/static/icons/${theme ? 'light' : 'dark'}-mode-btn.svg`}
               width="32"
               height="32"
             />
