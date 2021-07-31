@@ -16,10 +16,9 @@ module.exports = {
     extend: {
       screens: {
         sm: '414px',
-        '2xl': '1440px',
       },
       colors: {
-        base: colorWithOpacity('--color-base'),
+        baseColor: colorWithOpacity('--color-base'),
         main: colorWithOpacity('--color-main'),
         mainInverted: colorWithOpacity('--color-main-inverted'),
         secondary: colorWithOpacity('--color-secondary'),
@@ -31,6 +30,13 @@ module.exports = {
       fontFamily: {
         sans: ['"Graphik"', ...defaultTheme.fontFamily.sans],
         greycliff: ['"GreycliffCF"', ...defaultTheme.fontFamily.sans],
+      },
+      fontSize: {
+        xs: ['0.68rem', { lineHeight: '1rem' }],
+        sm: ['0.8rem', { lineHeight: '1.25rem' }],
+      },
+      spacing: {
+        104: '28rem',
       },
     },
   },
