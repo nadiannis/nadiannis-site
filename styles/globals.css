@@ -52,12 +52,20 @@
     line-height: 1.7;
   }
 
+  @screen lg {
+    html,
+    body {
+      font-size: 20px;
+    }
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
+    @apply font-bold font-greycliff;
     line-height: 1.1;
   }
 }
@@ -71,4 +79,42 @@
   --color-muted: 193, 198, 219;
   --color-shade-1: 38, 40, 48;
   --color-shade-2: 0, 0, 0;
+}
+
+.btn {
+  @apply font-greycliff text-center inline-block transition-all;
+  padding: 0.87rem 1.78rem;
+}
+
+.btn-solid {
+  @apply bg-main text-base;
+}
+
+.btn-solid:hover,
+.btn-solid:active {
+  @apply bg-shade2 text-main;
+}
+
+.btn-ghost {
+  @apply text-main border-2 border-main;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+  @apply bg-main text-base border-2 border-main;
+}
+
+.link {
+  @apply relative font-greycliff text-main text-lg md:text-2xl lg:text-4xl inline-block transition-all mb-10 lg:mb-14;
+}
+
+.link::after {
+  @apply absolute block w-full bottom-0 left-0 h-3;
+  content: '';
+  background: rgba(var(--color-secondary), 0.17);
+  transition: height 0.15s ease 0s;
+}
+
+.link:hover::after {
+  height: 0;
 }

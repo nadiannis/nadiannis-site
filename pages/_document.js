@@ -81,6 +81,7 @@ class MyDocument extends Document {
             content="/static/favicons/ms-icon-144x144.png"
           />
           <meta name="theme-color" content="#ffffff" />
+          <meta name="author" content="Annisa Nadia Neyla" />
         </Head>
         <body>
           <Main />
