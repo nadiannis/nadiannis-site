@@ -16,6 +16,7 @@ module.exports = {
     extend: {
       screens: {
         sm: '414px',
+        mdplus: '824px',
       },
       colors: {
         baseColor: colorWithOpacity('--color-base'),
@@ -26,6 +27,7 @@ module.exports = {
         muted: colorWithOpacity('--color-muted'),
         shade1: colorWithOpacity('--color-shade-1'),
         shade2: colorWithOpacity('--color-shade-2'),
+        shade3: colorWithOpacity('--color-shade-3'),
       },
       fontFamily: {
         sans: ['"Graphik"', ...defaultTheme.fontFamily.sans],
@@ -34,9 +36,19 @@ module.exports = {
       fontSize: {
         xs: ['0.68rem', { lineHeight: '1rem' }],
         sm: ['0.8rem', { lineHeight: '1.25rem' }],
+        md: ['0.85rem', { lineHeight: '1.25rem' }],
       },
       spacing: {
         104: '28rem',
+      },
+      boxShadow: {
+        lgTop:
+          '0 -10px 15px -3px rgba(90, 100, 110, 0.1), 0 -4px 6px -2px rgba(90, 100, 110, 0.05)',
+        xlTop:
+          '-7px -7px 15px -3px rgba(90, 100, 110, 0.1), -3px -3px 6px -2px rgba(90, 100, 110, 0.05)',
+      },
+      width: {
+        '11/12': '90%',
       },
     },
   },
