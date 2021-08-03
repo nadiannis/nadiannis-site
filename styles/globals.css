@@ -12,6 +12,7 @@
     --color-muted: 85, 88, 105;
     --color-shade-1: 237, 239, 247;
     --color-shade-2: 233, 234, 242;
+    --color-shade-3: 225, 227, 240;
   }
 
   @font-face {
@@ -79,6 +80,7 @@
   --color-muted: 193, 198, 219;
   --color-shade-1: 38, 40, 48;
   --color-shade-2: 0, 0, 0;
+  --color-shade-3: 85, 88, 105;
 }
 
 .btn {
@@ -87,7 +89,7 @@
 }
 
 .btn-solid {
-  @apply bg-main text-base;
+  @apply bg-main text-baseColor;
 }
 
 .btn-solid:hover,
@@ -101,7 +103,7 @@
 
 .btn-ghost:hover,
 .btn-ghost:active {
-  @apply bg-main text-base border-2 border-main;
+  @apply bg-main text-baseColor border-2 border-main;
 }
 
 .link {
