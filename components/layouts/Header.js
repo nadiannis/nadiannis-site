@@ -4,7 +4,7 @@ import Container from '../ui/Container';
 import NavLinkList from '../ui/NavLinkList';
 import ThemeButton from '../ui/ThemeButton';
 
-export default function MinimalHeader() {
+export default function Header() {
   return (
     <header className="py-3.5 bg-baseColor border-b border-gray-200 dark:border-gray-700 mdplus:border-0 mdplus:relative">
       <Container>
