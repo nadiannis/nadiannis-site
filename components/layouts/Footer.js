@@ -2,7 +2,7 @@ import Container from '../ui/Container';
 import SocialLinkList from '../ui/SocialLinkList';
 import Button from '../ui/Button';
 
-export default function MinimalFooter() {
+export default function Footer() {
   return (
     <footer className="text-center bg-shade1 text-secondary pt-16 pb-20 mdplus:pb-4">
       <Container>
