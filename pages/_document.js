@@ -82,6 +82,10 @@ class MyDocument extends Document {
           />
           <meta name="theme-color" content="#ffffff" />
           <meta name="author" content="Annisa Nadia Neyla" />
+          <meta
+            name="keywords"
+            content="Frontend Engineer, Frontend Developer, Web Developer, Frontend Development, Web Development, Software Engineering, React, JavaScript, TypeScript, CSS, Indonesia"
+          />
         </Head>
         <body>
           <Main />

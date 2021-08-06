@@ -4,17 +4,13 @@ import Link from 'next/link';
 import SingleSectionLayout from '../components/layouts/SingleSectionLayout';
 import Container from '../components/ui/Container';
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Head>
         <meta
           name="description"
           content="I turn ideas into great-looking usable apps. Find out more about me, my writings, and the projects I've created."
-        />
-        <meta
-          name="keywords"
-          content="Frontend Engineer, Frontend Developer, Web Developer, React, JavaScript, CSS, Indonesia"
         />
         <title>Annisa Nadia</title>
       </Head>
@@ -60,4 +56,6 @@ export default function Home() {
   );
 }
 
-Home.getLayout = (page) => <SingleSectionLayout>{page}</SingleSectionLayout>;
+HomePage.getLayout = (page) => (
+  <SingleSectionLayout>{page}</SingleSectionLayout>
+);

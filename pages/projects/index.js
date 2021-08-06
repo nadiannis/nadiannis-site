@@ -11,10 +11,6 @@ export default function ProjectsPage() {
           name="description"
           content="I turn ideas into great-looking usable apps. Find out more about me, my writings, and the projects I've created."
         />
-        <meta
-          name="keywords"
-          content="Frontend Engineer, Frontend Developer, Web Developer, React, JavaScript, CSS, Indonesia"
-        />
         <title>Projects | Annisa Nadia</title>
       </Head>
 
