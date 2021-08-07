@@ -1,0 +1,34 @@
+[
+  {
+    "id": "in1",
+    "name": "Frontend Development"
+  },
+  {
+    "id": "in2",
+    "name": "Software Engineering"
+  },
+  {
+    "id": "in3",
+    "name": "Project Management"
+  },
+  {
+    "id": "in4",
+    "name": "Self-development"
+  },
+  {
+    "id": "in5",
+    "name": "Education"
+  },
+  {
+    "id": "in6",
+    "name": "Open-source"
+  },
+  {
+    "id": "in7",
+    "name": "Art"
+  },
+  {
+    "id": "in8",
+    "name": "Audio Programming"
+  }
+]
