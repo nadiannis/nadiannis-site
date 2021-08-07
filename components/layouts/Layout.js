@@ -8,9 +8,11 @@ export default function Layout({ children }) {
   const { theme } = useTheme();
 
   return (
-    <div className={`bg-baseColor h-screen flex flex-col ${theme}`}>
+    <div className={`bg-baseColor min-h-screen flex flex-col ${theme}`}>
       <Header />
-      <main className="flex-auto">{children}</main>
+      <main className="flex-auto flex flex-col items-center justify-center">
+        {children}
+      </main>
       <Footer />
       <BottomNavigation />
     </div>

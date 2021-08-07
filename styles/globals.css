@@ -107,7 +107,7 @@
 }
 
 .link {
-  @apply relative font-greycliff text-main text-lg md:text-2xl lg:text-4xl inline-block transition-all mb-10 lg:mb-14;
+  @apply relative font-greycliff text-main text-lg md:text-2xl lg:text-4xl inline-block transition-all my-5 lg:my-7;
 }
 
 .link::after {
