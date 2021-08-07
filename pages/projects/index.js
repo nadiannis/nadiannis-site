@@ -14,7 +14,7 @@ export default function ProjectsPage() {
         <title>Projects | Annisa Nadia</title>
       </Head>
 
-      <section className="text-main py-12">
+      <section className="text-main py-12 w-full">
         <Container>
           <div className="text-center">
             <h1 className="text-2xl md:text-3xl text-center inline-block border-b border-gray-300 dark:border-gray-600">
