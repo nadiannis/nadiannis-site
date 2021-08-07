@@ -15,14 +15,14 @@ export default function HomePage() {
         <title>Annisa Nadia</title>
       </Head>
 
-      <section className="py-10 h-full flex justify-center items-center">
+      <section className="py-10 w-full">
         <Container>
           <div className="text-center lg:text-left block lg:flex justify-between items-center">
-            <div className="">
+            <div>
               <span className="text-sm sm:text-lg lg:text-xl block text-secondary font-bold mb-1">
                 Personal site of
               </span>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-main mb-12 tracking-widest">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-main mb-7 lg:mb-12 tracking-widest">
                 Annisa Nadia
               </h1>
             </div>
