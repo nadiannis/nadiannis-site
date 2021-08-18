@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function BlogCard({ blog }) {
-  const { title, createdAt, image, slug } = blog;
+  const { title, createdAt, image, readingTime, slug } = blog;
 
   const bannerPath = `/static/images/blogs/${slug}/${image}`;
   const linkPath = `/blog/${slug}`;
@@ -28,7 +28,7 @@ export default function BlogCard({ blog }) {
           />
           <div className="text-center my-7 px-5">
             <div className="text-md text-muted mb-1">
-              <span>{formattedDate}</span> &middot; <span>3 min read</span>
+              <span>{formattedDate}</span> &middot; <span>{readingTime}</span>
             </div>
             <h2 className="text-2xl">{title}</h2>
           </div>

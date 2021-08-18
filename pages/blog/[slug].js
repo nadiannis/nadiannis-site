@@ -10,7 +10,8 @@ import MDXComponents from '../../components/ui/MDXComponents';
 import { getAllBlogsData, getBlog } from '../../helpers/mdx';
 
 export default function BlogPage({ blog }) {
-  const { title, author, createdAt, summary, image, slug, code } = blog;
+  const { title, author, createdAt, summary, image, readingTime, slug, code } =
+    blog;
 
   const Component = useMemo(() => getMDXComponent(code), [code]);
 
@@ -35,7 +36,7 @@ export default function BlogPage({ blog }) {
               <h1 className="text-5xl sm:text-6xl inline-block m-0">{title}</h1>
               <div className="text-md text-muted mt-6">
                 <span className="block font-bold">{author}</span>
-                <span>{formattedDate}</span> &middot; <span>3 min read</span>
+                <span>{formattedDate}</span> &middot; <span>{readingTime}</span>
               </div>
               <div className="mt-6 pb-1">
                 <Image
