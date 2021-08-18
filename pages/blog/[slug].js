@@ -51,6 +51,16 @@ export default function BlogPage({ blog }) {
               </div>
             </header>
             <Component components={{ ...MDXComponents }} />
+            <div className="text-md mt-12">
+              <a
+                href={`https://github.com/nadiannis/nadiannis-site/edit/develop/data/blog/${slug}.mdx`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                Edit on GitHub
+              </a>
+            </div>
           </article>
         </Container>
       </section>
