@@ -3,6 +3,7 @@ import path from 'path';
 
 import { bundleMDX } from 'mdx-bundler';
 import matter from 'gray-matter';
+import readingTime from 'reading-time';
 
 export const blogDirectory = path.join(process.cwd(), 'data/blog');
 
@@ -14,8 +15,11 @@ export const getBlog = async (slug) => {
     cwd: blogDirectory,
   });
 
+  const { text } = readingTime(source);
+
   return {
     ...frontmatter,
+    readingTime: text,
     slug,
     code,
   };
@@ -31,8 +35,11 @@ export const getAllBlogsData = () => {
     const { data: frontmatter } = matter(source);
     const slug = blogFileName.replace(/\.mdx?$/, '');
 
+    const { text } = readingTime(source);
+
     return {
       ...frontmatter,
+      readingTime: text,
       slug,
     };
   });
