@@ -120,3 +120,68 @@
 .link:hover::after {
   height: 0;
 }
+
+.custom-img {
+  @apply object-contain rounded-sm;
+  position: relative !important;
+  width: 100% !important;
+  height: unset !important;
+}
+
+.unset-img {
+  @apply w-full mt-5 pb-1;
+}
+
+.unset-img > div {
+  position: unset !important;
+}
+
+.blog h1,
+.blog h2,
+.blog h3,
+.blog h4,
+.blog h5,
+.blog h6 {
+  @apply mt-9;
+}
+
+.blog h1 {
+  @apply text-4xl sm:text-5xl;
+}
+
+.blog h2 {
+  @apply text-3xl sm:text-4xl;
+}
+
+.blog h3 {
+  @apply text-2xl sm:text-3xl;
+}
+
+.blog h4 {
+  @apply text-xl sm:text-2xl;
+}
+
+.blog h5 {
+  @apply text-lg sm:text-xl;
+}
+
+.blog h6 {
+  @apply text-base sm:text-lg;
+}
+
+.blog ul,
+.blog ol {
+  @apply mt-5 ml-4;
+}
+
+.blog ul > li {
+  @apply mb-3 list-disc;
+}
+
+.blog ol > li {
+  @apply mb-3 list-decimal;
+}
+
+.blog blockquote {
+  @apply bg-shade1 mt-5 px-7 pt-1 pb-5 rounded-sm border-l-8 border-shade3;
+}
