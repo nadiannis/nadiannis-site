@@ -49,14 +49,14 @@
 
   html,
   body {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.7;
   }
 
   @screen lg {
     html,
     body {
-      font-size: 20px;
+      font-size: 19px;
     }
   }
 
@@ -107,7 +107,7 @@
 }
 
 .link {
-  @apply relative font-greycliff text-main text-lg md:text-2xl lg:text-4xl inline-block transition-all my-5 lg:my-7;
+  @apply relative text-main inline-block transition-all;
 }
 
 .link::after {
