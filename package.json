@@ -27,6 +27,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "esbuild": "^0.12.20",
+    "mdx-bundler": "^6.0.1",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -42,6 +44,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "gray-matter": "^4.0.3",
     "husky": "^7.0.0",
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
