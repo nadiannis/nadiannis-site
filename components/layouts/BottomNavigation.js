@@ -10,7 +10,7 @@ export default function BottomNavigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="py-3.5 bg-baseColor border-t border-gray-200 dark:border-gray-700 fixed mdplus:hidden w-full bottom-0 left-0">
+    <div className="py-3.5 bg-baseColor border-t border-gray-200 dark:border-gray-700 fixed mdplus:hidden w-full bottom-0 left-0 bg-opacity-75 backdrop-filter backdrop-blur-md backdrop-saturate-100">
       <Container>
         <div className="flex justify-between items-center">
           <ThemeButton />
