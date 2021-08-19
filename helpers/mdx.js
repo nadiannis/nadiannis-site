@@ -4,6 +4,7 @@ import path from 'path';
 import { bundleMDX } from 'mdx-bundler';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
+import remarkPrism from 'remark-prism';
 
 export const blogDirectory = path.join(process.cwd(), 'data/blog');
 
@@ -13,6 +14,10 @@ export const getBlog = async (slug) => {
 
   const { code, frontmatter } = await bundleMDX(source, {
     cwd: blogDirectory,
+    xdmOptions(options) {
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkPrism];
+      return options;
+    },
   });
 
   const { text } = readingTime(source);
