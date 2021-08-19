@@ -46,7 +46,7 @@ export default function BlogPage({ blog }) {
                   height={240}
                   layout="responsive"
                   objectFit="cover"
-                  className="rounded-sm object-center"
+                  className="rounded-4px object-center"
                 />
               </div>
             </header>
