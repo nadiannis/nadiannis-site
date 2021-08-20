@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-import SingleSectionLayout from '../components/layouts/SingleSectionLayout';
-import Container from '../components/ui/Container';
+import SingleSectionLayout from '@/components/layouts/SingleSectionLayout';
+import Container from '@/components/ui/Container';
 
 export default function HomePage() {
   return (

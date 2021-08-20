@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import Script from 'next/script';
 import NProgress from 'nprogress';
-import getInitialThemeScript from '../helpers/theme';
+import getInitialThemeScript from '@/helpers/theme';
 
-import '../styles/globals.css';
-import '../styles/nprogress.css';
-import { ThemeContextProvider } from '../store/themeContext';
+import '@/styles/globals.css';
+import '@/styles/nprogress.css';
+import { ThemeContextProvider } from '@/store/themeContext';
 
 const progress = NProgress.configure({ showSpinner: false });
 

@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import Container from '../ui/Container';
-import NavLinkList from '../ui/NavLinkList';
-import ThemeButton from '../ui/ThemeButton';
+import Container from '@/components/ui/Container';
+import NavLinkList from '@/components/ui/NavLinkList';
+import ThemeButton from '@/components/ui/ThemeButton';
 
 export default function Header() {
   return (

@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import skillsData from '../data/skills.json';
-import interestsData from '../data/interests.json';
+import skillsData from '@/data/skills.json';
+import interestsData from '@/data/interests.json';
 
-import Layout from '../components/layouts/Layout';
-import Container from '../components/ui/Container';
-import BadgeList from '../components/badges/BadgeList';
+import Layout from '@/components/layouts/Layout';
+import Container from '@/components/ui/Container';
+import BadgeList from '@/components/badges/BadgeList';
 
 export default function AboutPage() {
   const filterSkillsByCategory = (skills, category) =>
