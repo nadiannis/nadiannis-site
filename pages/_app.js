@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-
+import Script from 'next/script';
 import NProgress from 'nprogress';
+import getInitialThemeScript from '../helpers/theme';
 
 import '../styles/globals.css';
 import '../styles/nprogress.css';
@@ -27,9 +28,16 @@ function MyApp({ Component, pageProps, router }) {
   }, [router]);
 
   return (
-    <ThemeContextProvider>
-      {getLayout(<Component {...pageProps} />)}
-    </ThemeContextProvider>
+    <>
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: getInitialThemeScript(),
+        }}
+      />
+      <ThemeContextProvider>
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeContextProvider>
+    </>
   );
 }
 
