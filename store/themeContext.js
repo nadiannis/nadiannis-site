@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from 'react';
+import { useState, createContext, useContext, useEffect } from 'react';
 
 const ThemeContext = createContext({
   theme: '',
@@ -8,10 +8,19 @@ const ThemeContext = createContext({
 export default ThemeContext;
 
 export const ThemeContextProvider = ({ children }) => {
-  const [theme, setTheme] = useState('');
+  const [theme, setTheme] = useState(undefined);
+
+  useEffect(() => {
+    const initialTheme = document.documentElement.className;
+    setTheme(initialTheme);
+  }, []);
 
   const toggleTheme = () => {
-    setTheme(!theme ? 'theme-dark dark' : '');
+    const value = !theme ? 'theme-dark dark' : '';
+
+    setTheme(value);
+    localStorage.setItem('theme', value);
+    document.documentElement.className = value;
   };
 
   const context = {
