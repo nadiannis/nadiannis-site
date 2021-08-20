@@ -1,6 +1,6 @@
 <div align="center">
   <br>
-  <a href="https://"><img width="96" height="96" src="https://raw.githubusercontent.com/nadiannis/nadiannis-site/main/public/static/favicons/favicon-96x96.png"></a>
+  <a href="https://"><img width="96" height="96" src="https://raw.githubusercontent.com/nadiannis/nadiannis-site/develop/public/static/favicons/ms-icon-310x310.png"></a>
   <br>
   <h1><strong>nadiannis.xyz</strong></h1>
   <p>🏡 A personal site of Annisa Nadia Neyla 🏡</p>
