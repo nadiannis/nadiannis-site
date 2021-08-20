@@ -50,6 +50,9 @@ module.exports = {
       width: {
         '11/12': '90%',
       },
+      borderRadius: {
+        '4px': '4px',
+      },
     },
   },
   variants: {

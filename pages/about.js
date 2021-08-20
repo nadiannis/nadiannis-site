@@ -27,10 +27,10 @@ export default function AboutPage() {
       <section className="text-main py-8 sm:py-12 w-full">
         <Container>
           <div className="max-w-screen-md mx-auto">
-            <h1 className="text-2xl md:text-3xl inline-block border-b border-gray-300 dark:border-gray-600">
+            <h1 className="text-2xl md:text-3xl inline-block border-b border-gray-300 dark:border-gray-600 mb-7">
               About
             </h1>
-            <div className="mt-7">
+            <div>
               <p className="mb-5">
                 Hi, I&apos;m Nadia. I&apos;m a computer science student at
                 Diponegoro University, who aspires to be a software developer. I

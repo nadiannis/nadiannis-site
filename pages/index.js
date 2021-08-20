@@ -29,21 +29,30 @@ export default function HomePage() {
             <div className="ml-0 lg:ml-7">
               <div>
                 <Link href="/blog">
-                  <a href="/blog" className="link">
+                  <a
+                    href="/blog"
+                    className="link font-greycliff text-lg md:text-2xl lg:text-4xl my-5 lg:my-7"
+                  >
                     Blog
                   </a>
                 </Link>
               </div>
               <div>
                 <Link href="/projects">
-                  <a href="/projects" className="link">
+                  <a
+                    href="/projects"
+                    className="link font-greycliff text-lg md:text-2xl lg:text-4xl my-5 lg:my-7"
+                  >
                     Projects
                   </a>
                 </Link>
               </div>
               <div>
                 <Link href="/about">
-                  <a href="/about" className="link">
+                  <a
+                    href="/about"
+                    className="link font-greycliff text-lg md:text-2xl lg:text-4xl my-5 lg:my-7"
+                  >
                     About
                   </a>
                 </Link>
