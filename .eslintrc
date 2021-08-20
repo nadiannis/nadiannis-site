@@ -23,6 +23,18 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@/components/*", "./components"],
+          ["@/data/*", "./data"],
+          ["@/helpers/*", "./helpers"],
+          ["@/store/*", "./store"],
+          ["@/styles/*", "./styles"]
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+      }
     }
   }
 }
