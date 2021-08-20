@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import Layout from '../../components/layouts/Layout';
-import Container from '../../components/ui/Container';
+import Layout from '@/components/layouts/Layout';
+import Container from '@/components/ui/Container';
 
 export default function ProjectsPage() {
   return (

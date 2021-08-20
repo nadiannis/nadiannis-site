@@ -4,10 +4,10 @@ import { useMemo } from 'react';
 
 import { getMDXComponent } from 'mdx-bundler/client';
 
-import Layout from '../../components/layouts/Layout';
-import Container from '../../components/ui/Container';
-import MDXComponents from '../../components/ui/MDXComponents';
-import { getAllBlogsData, getBlog } from '../../helpers/mdx';
+import Layout from '@/components/layouts/Layout';
+import Container from '@/components/ui/Container';
+import MDXComponents from '@/components/ui/MDXComponents';
+import { getAllBlogsData, getBlog } from '@/helpers/mdx';
 
 export default function BlogPage({ blog }) {
   const { title, author, createdAt, summary, image, readingTime, slug, code } =

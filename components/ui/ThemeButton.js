@@ -1,5 +1,5 @@
 import { IoIosSunny, IoMdMoon } from 'react-icons/io';
-import { useTheme } from '../../store/themeContext';
+import { useTheme } from '@/store/themeContext';
 import IconButton from './IconButton';
 
 export default function ThemeButton() {

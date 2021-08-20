@@ -1,5 +1,5 @@
-import Container from '../ui/Container';
-import SocialLinkList from '../ui/SocialLinkList';
+import Container from '@/components/ui/Container';
+import SocialLinkList from '@/components/ui/SocialLinkList';
 
 export default function MinimalFooter() {
   return (

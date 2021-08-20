@@ -1,6 +1,6 @@
-import Container from '../ui/Container';
-import SocialLinkList from '../ui/SocialLinkList';
-import Button from '../ui/Button';
+import Container from '@/components/ui/Container';
+import SocialLinkList from '@/components/ui/SocialLinkList';
+import Button from '@/components/ui/Button';
 
 export default function Footer() {
   return (

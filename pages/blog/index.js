@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import { getAllBlogsData } from '../../helpers/mdx';
+import { getAllBlogsData } from '@/helpers/mdx';
 
-import Layout from '../../components/layouts/Layout';
-import Container from '../../components/ui/Container';
-import BlogList from '../../components/blogs/BlogList';
+import Layout from '@/components/layouts/Layout';
+import Container from '@/components/ui/Container';
+import BlogList from '@/components/blogs/BlogList';
 
 export default function AllBlogsPage({ blogs }) {
   return (

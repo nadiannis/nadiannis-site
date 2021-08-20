@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { IoMdHome, IoMdMenu, IoMdClose } from 'react-icons/io';
 
-import Container from '../ui/Container';
-import IconButton from '../ui/IconButton';
-import NavLinkList from '../ui/NavLinkList';
-import ThemeButton from '../ui/ThemeButton';
+import Container from '@/components/ui/Container';
+import IconButton from '@/components/ui/IconButton';
+import NavLinkList from '@/components/ui/NavLinkList';
+import ThemeButton from '@/components/ui/ThemeButton';
 
 export default function BottomNavigation() {
   const [isOpen, setIsOpen] = useState(false);
