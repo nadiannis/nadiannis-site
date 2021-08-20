@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <br>
+  <a href="https://"><img width="96" height="96" src="https://raw.githubusercontent.com/nadiannis/nadiannis-site/main/public/static/favicons/favicon-96x96.png"></a>
+  <br>
+  <h1><strong>nadiannis.xyz</strong></h1>
+  <p>🏡 A personal site of Annisa Nadia Neyla 🏡</p>
+  <br>
+  <p align="center">
+    <a href="https://github.com/nadiannis/nadiannis-site/issues"><img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-blue.svg?style=flat"></a>
+  </p>
+  <br>
+    
+  [**View the Website**](https://)
+</div>
 
-## Getting Started
+## Description
 
-First, run the development server:
+**nadiannis.xyz** is Nadia's personal site. It is a platform for Nadia to showcase her projects and express herself through writings. The site is also a playground to experiment and explore things.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Next.js](https://nextjs.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [MDX](https://mdxjs.com)
+- [Vercel](https://vercel.com)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Run Locally
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Requirement:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+  - Install [Node.js](https://nodejs.org)
+  - Recommended to use [Yarn](https://yarnpkg.com)
 
-## Learn More
+- Clone the repo.
 
-To learn more about Next.js, take a look at the following resources:
+  ```bash
+  git clone https://github.com/nadiannis/nadiannis-site.git
+  ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Install the dependencies.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  ```bash
+  yarn
+  ```
 
-## Deploy on Vercel
+  ### Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  Run the development server & open [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  ```bash
+  yarn dev
+  ```
+
+  ### Production
+
+  To open the project in production mode, run:
+
+  ```bash
+  yarn build
+  yarn start
+  ```
+
+## Contributing
+
+You can contribute to this site by creating an [issue](https://github.com/nadiannis/nadiannis-site/issues) or [pull request](https://github.com/nadiannis/nadiannis-site/pulls).
+
+## License
+
+This project is licensed under the GNU GPL 3.0 License - see the [LICENSE](https://github.com/nadiannis/nadiannis-site/blob/main/LICENSE) file for details.
