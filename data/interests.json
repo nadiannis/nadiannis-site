@@ -9,26 +9,22 @@
   },
   {
     "id": "in3",
-    "name": "Project Management"
-  },
-  {
-    "id": "in4",
     "name": "Self-development"
   },
   {
-    "id": "in5",
+    "id": "in4",
     "name": "Education"
   },
   {
-    "id": "in6",
+    "id": "in5",
     "name": "Open-source"
   },
   {
-    "id": "in7",
+    "id": "in6",
     "name": "Art"
   },
   {
-    "id": "in8",
+    "id": "in7",
     "name": "Audio Programming"
   }
 ]

@@ -44,11 +44,10 @@ export default function AboutPage() {
                 videos, podcasts, and people in communities.
               </p>
               <p className="mb-5">
-                I joined Discord community of Web Programming Unpas (WPU), one
-                of the biggest web programming communities in Indonesia. I also
-                joined Frontend Indonesia, community of Indonesian frontend
-                developers. In these communities I can learn from others,
-                discuss, and share what I know.
+                Combining the art of design with the science of programming has
+                been fascinating to me. I like to turn ideas into great-looking
+                usable apps. I&apos;m also interested to combine programming
+                with other fields, such as audio engineering and education.
               </p>
               <p className="mb-5">
                 I was born in Jakarta, grew up in Bekasi, and went to school to
