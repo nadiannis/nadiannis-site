@@ -14,7 +14,7 @@ export default function BlogCard({ blog }) {
   });
 
   return (
-    <li className="rounded-4px border dark:border-gray-800 hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600 active:shadow-lg active:border-gray-300 dark:active:border-gray-600 transition duration-300 ease-in-out">
+    <li className="rounded-4px border dark:border-gray-700 hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600 active:shadow-lg active:border-gray-300 dark:active:border-gray-600 transition duration-300 ease-in-out">
       <Link href={linkPath}>
         <a href={linkPath}>
           <Image
