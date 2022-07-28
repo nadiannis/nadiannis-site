@@ -7,7 +7,7 @@ export default function MinimalFooter() {
       <Container>
         <SocialLinkList />
         <span className="block text-xs text-secondary mt-4">
-          &copy; 2021 Annisa Nadia Neyla
+          &copy; 2021 - {new Date().getFullYear()} Annisa Nadia Neyla
         </span>
       </Container>
     </footer>

@@ -13,7 +13,7 @@ export default function Footer() {
         <hr className="w-12 mx-auto border border-gray-300 dark:border-gray-600 mb-8" />
         <SocialLinkList />
         <span className="block text-xs mt-16">
-          &copy; 2021 Annisa Nadia Neyla
+          &copy; 2021 - {new Date().getFullYear()} Annisa Nadia Neyla
         </span>
       </Container>
     </footer>
