@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import Link from 'next/link';
+import valuesData from '@/data/values.json';
 import skillsData from '@/data/skills.json';
 import interestsData from '@/data/interests.json';
 
@@ -11,8 +13,14 @@ export default function AboutPage() {
     skills.filter((skill) => skill.category === category);
 
   const skillsGoodAt = filterSkillsByCategory(skillsData, 'good at');
-  const skillsHadFun = filterSkillsByCategory(skillsData, 'had fun');
-  const skillsWannaLearn = filterSkillsByCategory(skillsData, 'wanna learn');
+  const skillsFamiliarWith = filterSkillsByCategory(
+    skillsData,
+    'familiar with'
+  );
+  const skillsWannaLearnMore = filterSkillsByCategory(
+    skillsData,
+    'wanna learn more'
+  );
 
   return (
     <>
@@ -46,15 +54,39 @@ export default function AboutPage() {
               <p className="mb-5">
                 Combining the art of design with the science of programming has
                 been fascinating to me. I like to turn ideas into great-looking
-                usable apps. I&apos;m also interested to combine programming
-                with other fields, such as audio engineering and education.
+                usable apps. But I also enjoy dealing with behind-the-scenes
+                processes in apps. My goal is to create production-ready apps
+                that solve problems.
               </p>
               <p className="mb-5">
                 I was born in Jakarta, grew up in Bekasi, and went to school to
                 learn computer science in Semarang, Indonesia. Apart from
-                programming, I spend my spare time reading, writing, watching
-                YouTube videos, and listening to podcasts.
+                programming, I spend my spare time reading,{' '}
+                <Link href="/blog">
+                  <a href="/blog" className="link">
+                    writing
+                  </a>
+                </Link>
+                , watching YouTube videos, listening to podcasts, and{' '}
+                <a
+                  href="https://open.spotify.com/playlist/4mzMdEtWIaKrn1tSVWeV0U"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link"
+                >
+                  finding music that I like
+                </a>
+                .
               </p>
+            </div>
+
+            <div className="mt-12">
+              <h2 className="mb-5 text-xl border-b dark:border-gray-800">
+                Values
+              </h2>
+              <div className="mb-8">
+                <BadgeList data={valuesData} />
+              </div>
             </div>
 
             <div className="mt-12">
@@ -66,12 +98,12 @@ export default function AboutPage() {
                 <BadgeList data={skillsGoodAt} />
               </div>
               <div className="mb-8">
-                <h3 className="mb-3">Had fun</h3>
-                <BadgeList data={skillsHadFun} />
+                <h3 className="mb-3">Familiar with</h3>
+                <BadgeList data={skillsFamiliarWith} />
               </div>
               <div className="mb-8">
-                <h3 className="mb-3">Wanna learn</h3>
-                <BadgeList data={skillsWannaLearn} />
+                <h3 className="mb-3">Wanna learn more about</h3>
+                <BadgeList data={skillsWannaLearnMore} />
               </div>
             </div>
 

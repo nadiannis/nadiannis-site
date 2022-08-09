@@ -1,147 +1,177 @@
 [
   {
     "id": "sk1",
-    "name": "JavaScript",
+    "name": "Self-directed Learning",
     "category": "good at"
   },
   {
     "id": "sk2",
-    "name": "CSS",
-    "category": "good at"
-  },
-  {
-    "id": "sk3",
-    "name": "HTML",
-    "category": "good at"
-  },
-  {
-    "id": "sk4",
-    "name": "Sass",
-    "category": "good at"
-  },
-  {
-    "id": "sk5",
     "name": "Responsive Web Design",
     "category": "good at"
   },
   {
+    "id": "sk3",
+    "name": "JavaScript",
+    "category": "good at"
+  },
+  {
+    "id": "sk4",
+    "name": "CSS",
+    "category": "good at"
+  },
+  {
+    "id": "sk5",
+    "name": "HTML",
+    "category": "good at"
+  },
+  {
     "id": "sk6",
-    "name": "Self-directed Learning",
+    "name": "Sass",
     "category": "good at"
   },
   {
     "id": "sk7",
     "name": "React.js",
-    "category": "had fun"
+    "category": "good at"
   },
   {
     "id": "sk8",
     "name": "Next.js",
-    "category": "had fun"
+    "category": "familiar with"
   },
   {
     "id": "sk9",
     "name": "Node.js",
-    "category": "had fun"
+    "category": "familiar with"
   },
   {
     "id": "sk10",
-    "name": "TypeScript",
-    "category": "had fun"
+    "name": "Express.js",
+    "category": "familiar with"
   },
   {
     "id": "sk11",
-    "name": "Tailwind CSS",
-    "category": "had fun"
+    "name": "MySQL",
+    "category": "familiar with"
   },
   {
     "id": "sk12",
-    "name": "Bootstrap",
-    "category": "had fun"
+    "name": "MongoDB",
+    "category": "familiar with"
   },
   {
     "id": "sk13",
-    "name": "Git",
-    "category": "had fun"
+    "name": "Tailwind CSS",
+    "category": "familiar with"
   },
   {
     "id": "sk14",
-    "name": "Jest",
-    "category": "had fun"
+    "name": "Bootstrap",
+    "category": "familiar with"
   },
   {
     "id": "sk15",
     "name": "Figma",
-    "category": "had fun"
+    "category": "familiar with"
   },
   {
     "id": "sk16",
-    "name": "Python",
-    "category": "had fun"
+    "name": "Jest",
+    "category": "familiar with"
   },
   {
     "id": "sk17",
-    "name": "REST API",
-    "category": "had fun"
+    "name": "Git",
+    "category": "familiar with"
   },
   {
     "id": "sk18",
-    "name": "Test Driven Development",
-    "category": "had fun"
+    "name": "Python",
+    "category": "familiar with"
   },
   {
     "id": "sk19",
-    "name": "Web Accessibility",
-    "category": "wanna learn"
+    "name": "REST API",
+    "category": "familiar with"
   },
   {
     "id": "sk20",
-    "name": "Frontend Performance",
-    "category": "wanna learn"
+    "name": "Clean Code",
+    "category": "wanna learn more"
   },
   {
     "id": "sk21",
-    "name": "Cross-browser Compatibility",
-    "category": "wanna learn"
+    "name": "Refactoring",
+    "category": "wanna learn more"
   },
   {
     "id": "sk22",
-    "name": "PWA",
-    "category": "wanna learn"
+    "name": "Test Driven Development",
+    "category": "wanna learn more"
   },
   {
     "id": "sk23",
-    "name": "Redux",
-    "category": "wanna learn"
+    "name": "Software Architecture",
+    "category": "wanna learn more"
   },
   {
     "id": "sk24",
-    "name": "Vue",
-    "category": "wanna learn"
+    "name": "Design Patterns",
+    "category": "wanna learn more"
   },
   {
     "id": "sk25",
-    "name": "Java",
-    "category": "wanna learn"
+    "name": "Software Scalability",
+    "category": "wanna learn more"
   },
   {
     "id": "sk26",
-    "name": "Haskell",
-    "category": "wanna learn"
+    "name": "Frontend Performance",
+    "category": "wanna learn more"
   },
   {
     "id": "sk27",
-    "name": "Go",
-    "category": "wanna learn"
+    "name": "Web Accessibility",
+    "category": "wanna learn more"
   },
   {
     "id": "sk28",
-    "name": "JUCE",
-    "category": "wanna learn"
+    "name": "Cross-browser Compatibility",
+    "category": "wanna learn more"
   },
   {
     "id": "sk29",
     "name": "UI Design Principles",
-    "category": "wanna learn"
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk30",
+    "name": "PWA",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk31",
+    "name": "TypeScript",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk32",
+    "name": "Java",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk33",
+    "name": "Go",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk34",
+    "name": "Docker",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk35",
+    "name": "JUCE",
+    "category": "wanna learn more"
   }
 ]
