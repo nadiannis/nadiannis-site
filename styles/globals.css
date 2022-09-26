@@ -116,7 +116,7 @@
   @apply absolute block w-full bottom-0 left-0 h-3;
   content: '';
   background: rgba(var(--color-secondary), 0.17);
-  transition: height 0.15s ease 0s;
+  transition: height 0.15s ease-in 0s;
 }
 
 .link:hover::after {
@@ -220,7 +220,7 @@ pre[class*='language-'] {
 /* Inline code */
 :not(pre) > code[class*='language-'],
 :not(pre) > code {
-  @apply rounded-4px px-2 py-1.5 bg-shade1 text-main font-bold;
+  @apply rounded-4px px-2 py-1.5 bg-shade2 text-main font-bold;
   font-family: 'Inconsolata', Monaco, Consolas, 'Courier New', Courier,
     monospace;
   font-size: 0.94rem;
@@ -311,4 +311,22 @@ pre::-webkit-scrollbar {
 pre {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  width: 0.74rem;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-shade1;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full;
+  background: rgba(var(--color-secondary), 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background: rgba(var(--color-secondary), 1);
 }
