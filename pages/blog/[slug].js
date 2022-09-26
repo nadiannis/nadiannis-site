@@ -10,13 +10,27 @@ import MDXComponents from '@/components/ui/MDXComponents';
 import { getAllBlogsData, getBlog } from '@/helpers/mdx';
 
 export default function BlogPage({ blog }) {
-  const { title, author, createdAt, summary, image, readingTime, slug, code } =
-    blog;
+  const {
+    title,
+    author,
+    createdAt,
+    updatedAt,
+    summary,
+    image,
+    readingTime,
+    slug,
+    code,
+  } = blog;
 
   const Component = useMemo(() => getMDXComponent(code), [code]);
 
   const bannerPath = `/static/images/blogs/${slug}/${image}`;
-  const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
+  const formattedDateCreated = new Date(createdAt).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+  const formattedDateUpdated = new Date(updatedAt).toLocaleDateString('en-US', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
@@ -36,7 +50,8 @@ export default function BlogPage({ blog }) {
               <h1 className="text-5xl sm:text-6xl inline-block m-0">{title}</h1>
               <div className="text-md text-muted mt-6">
                 <span className="block font-bold">{author}</span>
-                <span>{formattedDate}</span> &middot; <span>{readingTime}</span>
+                <span>{formattedDateCreated}</span> &middot;{' '}
+                <span>{readingTime}</span>
               </div>
               <div className="mt-6 pb-1">
                 <Image
@@ -52,6 +67,11 @@ export default function BlogPage({ blog }) {
             </header>
             <Component components={{ ...MDXComponents }} />
             <div className="text-md mt-12">
+              {createdAt !== updatedAt && (
+                <span className="block text-muted mb-4">
+                  Last updated: {formattedDateUpdated}
+                </span>
+              )}
               <a
                 href={`https://github.com/nadiannis/nadiannis-site/edit/develop/data/blog/${slug}.mdx`}
                 target="_blank"
