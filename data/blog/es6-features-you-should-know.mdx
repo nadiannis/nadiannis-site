@@ -1,0 +1,681 @@
+---
+title: 'Fitur-Fitur ES6 yang Perlu Diketahui'
+author: 'Annisa Nadia'
+createdAt: '2022-10-01'
+updatedAt: '2022-10-01'
+summary: 'Sebagai developer yang menggunakan JavaScript, penting untuk mengetahui fitur-fitur ES6. Hal itu karena pada ES6 terdapat perubahan-perubahan yang cukup signifikan untuk bahasa JavaScript. ES6 menawarkan fitur-fitur baru, yang menjadikan kode lebih simple & readable. ES6 juga digunakan pada library atau framework JavaScript yang modern.'
+image: 'es6.jpg'
+---
+
+ES6 adalah versi JavaScript yang lebih baru yang dirilis pada tahun 2015. ES6 juga dikenal sebagai ECMAScript 2015.
+
+Pada ES6 terdapat perubahan-perubahan yang cukup signifikan untuk bahasa JavaScript. ES6 menawarkan fitur-fitur baru, yang menjadikan kode lebih _simple_ & _readable_.
+ES6 juga digunakan pada _library_ atau _framework_ JavaScript yang _modern_, seperti React.js dan Vue.js. Maka dari itu, penting untuk mengetahui fitur-fitur ES6.
+
+Berikut ini fitur-fitur ES6 yang perlu diketahui.
+
+- let & const
+- _Template Literals_
+- _Arrow Function_
+- _Extended Parameter Handling_
+  - _Default Parameter_
+  - _Rest Parameter_
+  - _Spread Operator_
+- _Enhanced Object Properties_
+  - _Shorthand Property Names_
+  - _Computed Property Names_
+  - _Method Properties_
+- _Destructuring_
+- ESModules
+  - _Export_
+  - _Import_
+- _Array Element Finding_
+  - find()
+  - findIndex()
+- _String Searching_
+  - includes()
+  - startsWith()
+  - endsWith()
+- _Classes_
+- _Promises_
+
+## let & const
+
+_Keyword_ `let` dipakai untuk mendeklarasikan suatu _variable_ dengan cakupan blok (_block-scope_).
+Kode yang berada dalam cakupan blok itu maksudnya segala kode yang berada di antara tanda kurung kurawal (`{}`).
+Jadi, _variable_ yang dideklarasikan dalam suatu blok kode dengan _keyword_ `let` hanya akan tersedia di dalam cakupan blok kode tersebut saja.
+
+```js
+var x = 5;
+
+if (x === 5) {
+  let x = 100;
+  console.log(x); // Output: 100
+}
+
+console.log(x); // Output: 5
+```
+
+```js
+var x = 5;
+
+if (x === 5) {
+  var x = 100;
+  console.log(x); // Output: 100
+}
+
+console.log(x); // Output: 100
+```
+
+Sama seperti _keyword_ `let`, _keyword_ `const` juga dipakai untuk mendeklarasikan suatu _variable_ dengan cakupan blok (_block-scope_), hanya saja _value_-nya konstan.
+_Variable_ yang dideklarasikan dengan _keyword_ `const` tidak dapat dideklarasikan ulang atau dilakukan _reassignment_.
+
+```js
+var x = 5;
+
+if (x === 5) {
+  const x = 100;
+  console.log(x); // Output: 100
+}
+
+console.log(x); // Output: 5
+
+const firstName = 'John';
+firstName = 'Richard'; // throws error as const variable can't be reassigned
+
+const user = { firstName: 'John', lastName: 'Mayer' };
+user = { name: 'John Mayer' }; // throws error as const variable can't be reassigned
+
+// Isi object user dapat diubah namun tidak dapat dilakukan reassignment
+user.firstName = 'Richard';
+console.log(user); // Output: {firstName: 'Richard', lastName: 'Mayer'}
+```
+
+## _Template Literals_
+
+_Template literals_ adalah _string_ yang bisa disisipkan suatu _expression_ dan bisa juga dijadikan _multi-line_.
+_String_ diapit oleh _backtick_ (`) untuk membuat _template literals_.
+
+```js
+const message = `Hi, Nadia!`;
+console.log(message);
+
+/*
+Output:
+Hi, Nadia!
+*/
+```
+
+```js
+/*** String Interpolation ***/
+const greeting = 'Hi';
+const name = 'Nadia';
+console.log(`${greeting}, ${name}!`);
+
+// The code above is the same as:
+console.log(greeting + ', ' + name + '!');
+
+/*
+Output:
+Hi, Nadia!
+*/
+```
+
+```js
+/*** Multi-line String ***/
+const text = `Welcome!
+Please choose your role and
+click the button to register.
+`;
+console.log(text);
+
+/*
+Output:
+Welcome!
+Please choose your role and
+click the button to register.
+*/
+```
+
+## _Arrow Function_
+
+_Arrow function_ adalah cara lain untuk menulis fungsi. Dengan _arrow function_, kita bisa menulis fungsi dengan lebih ringkas dan dapat menerapkan _implicit return_.
+_Arrow function_ harus didefinisikan sebelum digunakan.
+
+Dengan _arrow function_, tidak ada pengikatan (_binding_) _keyword_ `this`. Oleh karena itu, _arrow function_ tidak cocok untuk mendefinisikan _method_ suatu _object_.
+
+```js
+/*** Arrow Function ***/
+const sum = (num1, num2) => {
+  return num1 + num2;
+};
+
+/*** Arrow Function (Implicit Return) ***/
+const sum = (num1, num2) => num1 + num2;
+
+// The code above is the same as:
+function sum(num1, num2) {
+  return num1 + num2;
+}
+
+sum(6, 4); // returns 10
+sum(30); // returns NaN
+```
+
+## _Extended Parameter Handling_
+
+### _Default Parameter_
+
+Pada JavaScript, nilai _default_ suatu parameter fungsi adalah `undefined`. Jika ingin mengatur nilai _default_-nya jadi selain `undefined`, fitur ini bisa jadi solusi.
+_Assign_ suatu parameter dengan nilai seperti di bawah ini.
+
+```js
+const sum = (num1, num2 = 0) => {
+  return num1 + num2;
+};
+
+// The code above is the same as:
+function sum(num1, num2) {
+  num2 = num2 === undefined ? 0 : num2;
+  return num1 + num2;
+}
+
+sum(6, 4); // returns 10
+sum(30); // returns 30
+```
+
+### _Rest Parameter_
+
+Operator _rest_ yang menggunakan tiga titik (`…`) menyimpan banyak elemen terpisah menjadi satu kesatuan dalam bentuk _array_.
+
+```js
+const userDetails = (firstName, lastName, ...otherInfo) => {
+  return otherInfo;
+};
+
+// The code above is the same as:
+function userDetails() {
+  return Array.from(arguments).slice(2);
+}
+
+userDetails('John', 'Mayer', 'Musician', 'Male', 'johnmayer@gmail.com');
+// returns ['Musician', 'Male', 'johnmayer@gmail.com']
+```
+
+### _Spread Operator_
+
+Operator _spread_ yang menggunakan tiga titik (`…`) membuat suatu koleksi elemen menjadi elemen-elemen yang terpisah.
+Operator _spread_ bisa diterapkan untuk _array_ maupun _object_.
+
+```js
+/*** Spread an Array ***/
+
+const names = ['John', 'Clayton', 'Mayer'];
+console.log(...names);
+
+// The code above is the same as:
+console.log.apply(null, names);
+
+/*
+Output: 
+John Clayton Mayer
+*/
+
+const unfinishedTasks = ['Learn functional programming', 'Read a book'];
+const finishedTasks = ['Make a blog', 'Do homework', 'Attend virtual event'];
+
+console.log([...unfinishedTasks, ...finishedTasks]);
+
+// The code above is the same as:
+console.log(unfinishedTasks.concat(finishedTasks));
+
+/*
+Output: 
+['Learn functional programming', 'Read a book', 'Make a blog', 'Do homework', 'Attend virtual event']
+*/
+```
+
+```js
+/*** Spread an Object ***/
+
+const name = { firstName: 'John', lastName: 'Mayer' };
+const userDetails = { ...name, job: 'Musician' };
+
+// The code above is the same as:
+const userDetails = Object.assign({}, name, { job: 'Musician' });
+
+console.log(userDetails);
+
+/*
+Output:
+{firstName: 'John', lastName: 'Mayer', job: 'Musician'}
+*/
+
+const name = { firstName: 'John', lastName: 'Mayer' };
+const userDetails = { ...name, job: 'Musician', firstName: 'Richard' };
+
+// The code above is the same as:
+const userDetails = Object.assign({}, name, {
+  job: 'Musician',
+  firstName: 'Richard',
+});
+
+console.log(userDetails);
+
+/*
+Output:
+{firstName: 'Richard', lastName: 'Mayer', job: 'Musician'}
+*/
+```
+
+Operator _spread_ bisa juga digunakan untuk menyebarkan elemen _array_ ke seluruh parameter saat memanggil suatu fungsi.
+
+```js
+const bio = (firstName, lastName, job) => {
+  return `${firstName} ${lastName} is a ${job}.`;
+};
+
+const userDetails = ['John', 'Mayer', 'Musician'];
+
+bio(...userDetails); // returns 'John Mayer is a Musician.'
+
+// The code above is the same as:
+bio.apply(null, userDetails); // returns 'John Mayer is a Musician.'
+```
+
+## _Enhanced Object Properties_
+
+### _Shorthand Property Names_
+
+Ketika membuat _object_, jika ada _variable_ yang namanya sama dengan nama _property_ _object_, maka cukup tulis sekali sesuai nama _variable_-nya untuk mendefinisikan _property_ & _value_ suatu _object_.
+
+```js
+const firstName = 'John';
+const lastName = 'Mayer';
+
+console.log({ firstName, lastName });
+
+// The code above is the same as:
+console.log({ firstName: firstName, lastName: lastName });
+
+/*
+Output:
+{firstName: 'John', lastName: 'Mayer'}
+*/
+```
+
+### _Computed Property Names_
+
+Dengan fitur ES6 ini, nama _property_ suatu _object literal_ dapat ditentukan secara dinamis.
+
+```js
+const propertyName = 'lastName';
+
+const user = {
+  firstName: 'John',
+  [propertyName]: 'Mayer',
+};
+
+// The code above is the same as:
+const user = { firstName: 'John' };
+user[propertyName] = 'Mayer';
+
+console.log(user);
+
+/*
+Output:
+{firstName: 'John', lastName: 'Mayer'}
+*/
+```
+
+### _Method Properties_
+
+Pada JavaScript, _property_ _object_ yang berupa fungsi disebut _method_. Dengan ES6, keyword `function` pada _method_ jadi dapat dihilangkan seperti berikut.
+
+```js
+const player = {
+  move(direction) {
+    return `Move ${direction}`;
+  },
+};
+
+// The code above is the same as:
+const player = {
+  move: function (direction) {
+    return 'Move ' + direction;
+  },
+};
+
+player.move('up'); // returns 'Move up'
+```
+
+## _Destructuring_
+
+_Destructuring_ adalah suatu cara untuk mengakses elemen-elemen dari _array_ atau atribut-atribut dari _object_ yang dimasukkan ke dalam _variable_-_variable_.
+
+```js
+/*** Destructuring an Array ***/
+
+const userDetails = ['John', 'Mayer', 'Musician'];
+const [firstName, lastName, job] = userDetails;
+
+// The code above is the same as:
+const firstName = userDetails[0];
+const lastName = userDetails[1];
+const job = userDetails[2];
+
+console.log(`First Name: ${firstName}, Last Name: ${lastName}, Job: ${job}`);
+
+/*
+Output:
+First Name: John, Last Name: Mayer, Job: Musician
+*/
+
+const userDetails = ['John', 'Mayer', 'Musician'];
+const [firstName, , job] = userDetails;
+
+// The code above is the same as:
+const firstName = userDetails[0];
+const job = userDetails[2];
+
+console.log(`First Name: ${firstName}, Job: ${job}`);
+
+/*
+Output:
+First Name: John, Job: Musician
+*/
+```
+
+```js
+/*** Destructuring an Object ***/
+
+const userDetails = { firstName: 'John', lastName: 'Mayer', job: 'Musician' };
+const { firstName, lastName, job } = userDetails;
+
+// The code above is the same as:
+const firstName = userDetails.firstName;
+const lastName = userDetails.lastName;
+const job = userDetails.job;
+
+console.log(`First Name: ${firstName}, Last Name: ${lastName}, Job: ${job}`);
+
+/*
+Output:
+First Name: John, Last Name: Mayer, Job: Musician
+*/
+
+const greet = ({ firstName }) => {
+  return `Hi, ${firstName}!`;
+};
+
+// The code above is the same as:
+function greet(username) {
+  const firstName = username.firstName;
+  return `Hi, ${firstName}!`;
+}
+
+const name = { firstName: 'John', lastName: 'Mayer' };
+greet(name); // returns 'Hi, John!'
+```
+
+Operator _rest_ (`…`) juga bisa digunakan saat melakukan _destructuring_. Dengan operator _rest_, sisa elemen-elemen _array_ atau atribut-atribut _object_ dapat disimpan ke dalam _array_ atau _object_ baru.
+
+```js
+const [firstName, ...others] = ['John', 'Clayton', 'Mayer'];
+
+// The code above is the same as:
+const others = Array.from(['John', 'Clayton', 'Mayer']).slice(1);
+
+console.log(others);
+
+/*
+Output:
+['Clayton', 'Mayer']
+*/
+
+const { firstName, ...others } = {
+  firstName: 'John',
+  middleName: 'Clayton',
+  lastName: 'Mayer',
+};
+console.log(others);
+
+/*
+Output:
+{middleName: 'Clayton', lastName: 'Mayer'}
+*/
+```
+
+## ESModules
+
+Terdapat mekanisme untuk memisahkan program JavaScript menjadi modul-modul yang terpisah, sehingga lebih mudah di-_maintain_.
+Hal itu dikarenakan saat ini aplikasi yang dibuat dengan JavaScript bisa semakin besar dan kompleks.
+
+### _Export_
+
+```js
+/*** Named Exports ***/
+/* math.js */
+
+// Export satu per satu
+export const pi = 3.141593;
+export const sum = (num1, num2) => num1 + num2;
+
+// Atau,
+// Export semua sekaligus
+const pi = 3.141593;
+const sum = (num1, num2) => num1 + num2;
+
+export { pi, sum };
+```
+
+```js
+/*** Default Exports ***/
+/* sum.js */
+
+export default function sum(num1, num2) {
+  return num1 + num2;
+}
+
+// Atau,
+const sum = (num1, num2) => num1 + num2;
+
+export default sum;
+```
+
+### _Import_
+
+```js
+/*** Import from Named Exports ***/
+/* main.js */
+
+import { pi, sum } from './math';
+
+console.log(pi);
+console.log(sum(5, 2));
+
+/*
+Output:
+3.141593
+7
+*/
+
+// Atau,
+import * as math from './math';
+
+console.log(math.pi);
+console.log(math.sum(5, 2));
+
+/*
+Output:
+3.141593
+7
+*/
+```
+
+```js
+/*** Import from Default Exports ***/
+/* main.js */
+
+import sum from './sum';
+
+console.log(sum(5, 2));
+
+/*
+Output:
+7
+*/
+```
+
+```js
+/*** Dynamic Imports ***/
+/* main.js */
+
+import('./a-module').then((module) => {
+  // Do something with the module
+});
+```
+
+## _Array Element Finding_
+
+ES6 menyediakan cara baru untuk menemukan elemen suatu _array_.
+
+### find()
+
+Metode `find()` me-_return_ elemen suatu _array_ yang pertama ditemukan sesuai dengan kondisi yang ditentukan (bernilai `true`).
+
+```js
+const numbers = [4, 7, 2, 10, 8, 24];
+
+numbers.find((number) => number > 7); // returns 10
+
+// The code above is the same as:
+numbers.filter((number) => number > 7)[0]; // returns 10
+```
+
+### findIndex()
+
+Metode `findIndex()` me-_return_ indeks dari elemen suatu _array_ yang pertama ditemukan sesuai dengan kondisi yang ditentukan (bernilai `true`).
+
+```js
+const numbers = [4, 7, 2, 10, 8, 24];
+
+numbers.findIndex((number) => number > 7); // returns 3
+```
+
+## _String Searching_
+
+ES6 menyediakan cara untuk mencari suatu string.
+
+### includes()
+
+Metode `includes()` me-_return_ `true` jika ditemukan nilai _string_ yang ingin dicari dalam suatu _string_, jika tidak ditemukan maka akan me-_return_ `false`.
+Tentukan _substring_ yang ingin dicari dengan menuliskannya sebagai argumen dari _method_.
+Secara opsional, kita juga bisa memberikan posisi indeks dimulainya pencarian (_default value_-nya adalah 0).
+
+```js
+// str.includes(substring, startPosition);
+
+'John Mayer'.includes('Jo'); // returns true
+'John Mayer'.includes('Jo', 2); // returns false
+'John Mayer'.includes('Mayer', 2); // returns true
+```
+
+### startsWith()
+
+Metode `startsWith()` me-_return_ `true` jika nilai _string_ yang ditentukan merupakan awal dari suatu _string_.
+Jika bukan, maka akan me-_return_ `false`. Tentukan _substring_ yang ingin dicari dengan menuliskannya sebagai argumen dari _method_.
+Secara opsional, kita juga bisa memberikan posisi indeks dimulainya pencarian (_default value_-nya adalah 0).
+
+```js
+// str.startsWith(substring, startPosition);
+
+'John Mayer'.startsWith('Jo'); // returns true
+'John Mayer'.startsWith('ohn', 1); // returns true
+'John Mayer'.startsWith('Mayer', 1); // returns false
+```
+
+### endsWith()
+
+Metode `endsWith()` me-_return_ `true` jika nilai _string_ yang ditentukan merupakan akhir dari suatu _string_.
+Jika bukan, maka akan me-_return_ `false`. Tentukan _substring_ yang ingin dicari dengan menuliskannya sebagai argumen dari _method_.
+Secara opsional, kita juga bisa menentukan posisi akhir untuk _substring_ bisa ditemukan (_default value_-nya adalah panjang dari _string_ atau `str.length`).
+
+```js
+// str.endsWith(substring, endPosition);
+
+'John Mayer'.endsWith('Mayer'); // returns true
+'John Mayer'.endsWith('Mayer', 4); // returns false
+'John Mayer'.endsWith('John', 4); // returns true
+```
+
+## _Classes_
+
+_Class_ adalah _template_ untuk membuat _object_. Di dalam _class_, kita bisa mendeklarasikan _property_ & _method_.
+Jika ingin menginisialisasi _property_ _object_, maka dapat menyertakan suatu _special method_, yaitu `constructor()` _method_.
+`constructor()` _method_ dieksekusi saat pertama kali _object_ dibuat.
+
+```js
+class User {
+  constructor(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }
+
+  getAge() {
+    return this.age;
+  }
+}
+
+// Use the class to create objects
+const user1 = new User('John', 'Mayer', 44);
+const user2 = new User('Freddie', 'Mercury', 76);
+
+console.log(user1.getAge()); // Output: 44
+console.log(user2.getAge()); // Output: 76
+```
+
+## _Promises_
+
+`Promise` adalah adalah _object_ yang menghasilkan _value_ jika aksi _asynchronous_ berhasil dilakukan, atau menghasilkan _error_ jika tidak berhasil dilakukan.
+Ketika aksi _asynchronous_ telah menghasilkan sesuatu, maka setelahnya dijalankan salah satu antara _callback_ `resolve` (jika berhasil) atau _callback_ `reject` (jika ditolak).
+
+_Object_ `Promise` memiliki _state_ dan hasil. Ketika _object_ `Promise` _state_-nya "pending", maka hasilnya `undefined`.
+Jika _object_ `Promise` _state_-nya "fulfilled", maka hasilnya adalah suatu _value_, dan jika _object_ `Promise` _state_-nya "rejected", maka hasilnya adalah _error_.
+
+```js
+// Create a promise using the promise constructor
+/*
+const promise = new Promise((resolve, reject) => {    
+  // Make an asynchronous call
+});
+*/
+
+function timeout(duration, shouldReject = false) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldReject) {
+        reject(`rejected after ${duration}ms`);
+      } else {
+        resolve(`resolved after ${duration}ms`);
+      }
+    }, duration);
+  });
+}
+
+// Use a promise
+timeout(4000)
+  .then((value) => console.log(`value: ${value}`))
+  .catch((error) => console.log(`error: ${error}`));
+
+timeout(4000, true)
+  .then((value) => console.log(`value: ${value}`))
+  .catch((error) => console.log(`error: ${error}`));
+
+/*
+Output:
+value: resolved after 4000ms
+error: rejected after 4000ms
+*/
+```
