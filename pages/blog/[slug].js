@@ -53,7 +53,7 @@ export default function BlogPage({ blog }) {
                 <span>{formattedDateCreated}</span> &middot;{' '}
                 <span>{readingTime}</span>
               </div>
-              <div className="mt-6 pb-1">
+              <div className="mt-6 pb-2">
                 <Image
                   src={bannerPath}
                   alt={title}

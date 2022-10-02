@@ -6,7 +6,7 @@ import ThemeButton from '@/components/ui/ThemeButton';
 
 export default function Header() {
   return (
-    <header className="py-3.5 bg-baseColor border-b border-gray-200 dark:border-gray-700 z-10 mdplus:border-0 mdplus:sticky mdplus:top-0 mdplus:bg-opacity-75 mdplus:backdrop-filter mdplus:backdrop-blur-md mdplus:backdrop-saturate-100">
+    <header className="py-2.5 mdplus:py-3.5 bg-baseColor border-b border-gray-200 dark:border-gray-700 z-10 mdplus:border-0 mdplus:sticky mdplus:top-0 mdplus:bg-opacity-75 mdplus:backdrop-filter mdplus:backdrop-blur-md mdplus:backdrop-saturate-100">
       <Container>
         <div className="text-center">
           <Link href="/">

@@ -58,7 +58,7 @@
   @screen lg {
     html,
     body {
-      font-size: 19px;
+      font-size: 18px;
     }
   }
 
@@ -139,12 +139,19 @@
 }
 
 .blog h1,
-.blog h2,
+.blog h2 {
+  @apply mt-12;
+}
+
 .blog h3,
 .blog h4,
 .blog h5,
 .blog h6 {
   @apply mt-9;
+}
+
+.blog h1:first-child {
+  @apply mt-8;
 }
 
 .blog h1 {
@@ -173,15 +180,23 @@
 
 .blog ul,
 .blog ol {
-  @apply mt-5 ml-4;
+  @apply mb-5 ml-4;
 }
 
 .blog ul > li {
-  @apply mb-3 list-disc;
+  @apply mt-3 list-disc;
+}
+
+.blog ul > li:first-child {
+  @apply mt-5;
 }
 
 .blog ol > li {
-  @apply mb-3 list-decimal;
+  @apply mt-3 list-decimal;
+}
+
+.blog ol > li:first-child {
+  @apply mt-5;
 }
 
 .blog blockquote {
