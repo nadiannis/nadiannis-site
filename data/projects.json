@@ -1,0 +1,36 @@
+[
+  {
+    "id": "pro1",
+    "name": "COVA",
+    "description": "A minimal & modern coffee shop one-page site. I design the UI, implement it into front-end code using modern build tools, and deploy the page on a web hosting.",
+    "tools": [
+      {
+        "id": 1,
+        "name": "HTML5"
+      },
+      {
+        "id": 2,
+        "name": "CSS3"
+      },
+      {
+        "id": 3,
+        "name": "JavaScript"
+      },
+      {
+        "id": 4,
+        "name": "Sass"
+      },
+      {
+        "id": 5,
+        "name": "Webpack"
+      },
+      {
+        "id": 6,
+        "name": "Figma"
+      }
+    ],
+    "demoUrl": "https://covaweb.netlify.app",
+    "codeUrl": "https://github.com/nadiannis/cova",
+    "image": "/static/images/projects/cova.jpg"
+  }
+]
