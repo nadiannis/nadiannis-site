@@ -1,0 +1,302 @@
+---
+title: 'Array Method pada JS yang Biasa Digunakan'
+author: 'Annisa Nadia'
+createdAt: '2022-11-17'
+updatedAt: '2022-11-17'
+summary: 'Bahasa JavaScript memiliki berbagai method yang digunakan pada array. Beberapa di antaranya ditemui seringkali digunakan dalam pembuatan aplikasi dengan bahasa JavaScript, seperti method map(), filter(), dan lainnya.'
+image: 'chairs.jpg'
+---
+
+Dalam beberapa kali membangun aplikasi menggunakan bahasa JavaScript, saya menemui beberapa _array method_ yang seringkali digunakan.
+
+Berikut ini _array method_ yang biasa digunakan.
+
+- filter()
+- find()
+- forEach()
+- includes()
+- map()
+- reduce()
+- sort()
+
+## filter()
+
+_Method_ `filter()` digunakan untuk menyeleksi _item-item_ suatu _array_ berdasarkan kondisi tertentu. _Method_ ini menerima argumen berupa _callback function_. _Callback function_ tersebut memiliki argumen `item`, `index`, dan `array` yang di-_filter_.
+
+_Callback function_ dieksekusi untuk setiap _item_. Jika _callback function_ me-_return_ nilai `true`, maka _item_ disimpan ke dalam _array_ hasil. Jika me-_return_ nilai `false`, maka _item_ tidak akan disimpan di _array_ hasil.
+
+Sintaksnya seperti ini.
+
+```js
+arr.filter((item, index, array) => {
+  // if the condition is true, the item is stored in the result array & iteration continues,
+  // if the condition is false, the item is not being included in the result array
+});
+```
+
+Ini contoh sederhana cara menggunakan _method_ `filter()`.
+
+```js
+const students = ['Harry', 'Hermione', 'Ron', 'Neville'];
+const result = students.filter((student) => student[0] === 'H');
+console.log(result);
+
+/*
+Output: 
+['Harry', 'Hermione']
+*/
+```
+
+## find()
+
+_Method_ `find()` digunakan untuk menemukan _item_ dalam _array_ yang pertama kali ditemukan sesuai dengan kondisi tertentu. _Method_ ini menerima argumen berupa _callback function_. _Callback function_ tersebut memiliki argumen `item`, `index`, dan `array` dari _item_ yang ingin ditemukan.
+
+_Callback function_ dieksekusi untuk setiap _item_. Jika _callback function_ me-_return_ nilai `true`, maka _item_ di-_return_ dan pencarian dihentikan. Namun jika _item_ yang dicari tidak ditemukan, maka `undefined` akan di-_return_.
+
+Sintaksnya seperti ini.
+
+```js
+arr.find((item, index, array) => {
+  // if the condition is true, then the item is returned & iteration is stopped,
+  // returns undefined if nothing found
+});
+```
+
+Ini contoh sederhana cara menggunakan _method_ `find()`.
+
+```js
+const students = ['Harry', 'Hermione', 'Ron', 'Neville'];
+const result = students.find((student) => student === 'Ron');
+console.log(result);
+
+/*
+Output: 
+Ron
+*/
+```
+
+## forEach()
+
+_Method_ `forEach()` digunakan untuk melakukan perulangan yang diterapkan pada _array_. _Method_ ini menjalankan suatu fungsi untuk setiap _item_ dari _array_. _Callback function_ menjadi argumen _method_ ini. _Callback function_ tersebut menerima argumen `item`, `index`, dan `array` yang dilakukan perulangan. _Method_ `forEach()` akan selalu me-_return_ `undefined`.
+
+Sintaksnya seperti ini.
+
+```js
+arr.forEach((item, index, array) => {
+  // Do something with the item
+});
+```
+
+Ini contoh sederhana cara menggunakan _method_ `forEach()`.
+
+```js
+const students = ['Harry', 'Hermione', 'Ron', 'Neville'];
+students.forEach((student, index, array) => {
+  console.log(`${student} is at index ${index} in ${array}`);
+});
+
+/*
+Output:
+Harry is at index 0 in Harry,Hermione,Ron,Neville
+Hermione is at index 1 in Harry,Hermione,Ron,Neville
+Ron is at index 2 in Harry,Hermione,Ron,Neville
+Neville is at index 3 in Harry,Hermione,Ron,Neville
+*/
+```
+
+## includes()
+
+_Method_ `includes()` digunakan untuk mengetahui apakah dalam suatu _array_ terdapat nilai tertentu. _Method_ ini memiliki parameter `value`, yaitu _value_ yang ingin dicari, dan parameter `fromIndex`, yaitu indeks dimulainya pencarian. Parameter `fromIndex` opsional untuk digunakan. _Method_ ini me-_return_ `true` jika _value_ ditemukan dan `false` jika tidak ditemukan.
+
+Sintaksnya seperti ini.
+
+```js
+arr.includes(value, fromIndex);
+```
+
+Ini contoh sederhana cara menggunakan _method_ `includes()`.
+
+```js
+const students = ['Harry', 'Hermione', 'Ron', 'Neville'];
+students.includes('Hermione'); // returns true
+students.includes('Draco'); //returns false
+students.includes('Harry', 1); //returns false
+```
+
+## map()
+
+_Method_ `map()` digunakan untuk mentransformasi _item-item_ dalam suatu _array_. _Method_ ini menerima argumen berupa _callback function_. _Callback function_ tersebut memiliki argumen `item`, `index`, dan `array` yang tiap _item_-nya ingin ditransformasi.
+
+_Callback function_ dieksekusi untuk setiap _item_. _Method_ ini me-_return_ _array_ baru yang tiap _item_-nya merupakan hasil dari apa yang dilakukan dalam _callback function_.
+
+Sintaksnya seperti ini.
+
+```js
+arr.map((item, index, array) => {
+  // returns the new value
+});
+```
+
+Ini contoh sederhana cara menggunakan _method_ `map()`.
+
+```js
+const students = ['Harry', 'Hermione', 'Ron', 'Neville'];
+const result = students.map((student) => {
+  return {
+    name: student,
+    length: student.length,
+  };
+});
+console.log(result);
+
+/*
+Output: 
+[{name: 'Harry', length: 5}, {name: 'Hermione', length: 8}, {name: 'Ron', length: 3}, {name: 'Neville', length: 7}]
+*/
+```
+
+## reduce()
+
+_Method_ `reduce()` digunakan untuk mengumpulkan _item-item_ dalam _array_ menjadi _single value_. _Method_ ini menerima argumen berupa _callback function_ dan `initialValue` yang opsional untuk digunakan. _Callback function_ tersebut memiliki argumen `accumulator`, `item`, `index`, dan `array` yang ingin di-_reduce_.
+
+_Callback function_ dieksekusi untuk setiap _item_. Argumen `accumulator` menyimpan _value_ hasil eksekusi _callback function_ di iterasi sebelumnya. Pada iterasi pertama, _value_ `accumulator` adalah `initialValue`. Namun jika `initialValue` tidak diberikan maka akan mengambil _item_ pertama dari _array (_`arr[0]`).
+
+Kemudian argumen `item` adalah _item_ dari _array_ di iterasi yang sedang berlangsung (_current item_). Pada iterasi pertama, _value_ `item` adalah _item_ pertama _array_ (`arr[0]`) jika `initialValue` diberikan. Namun jika `initialValue` tidak diberikan, maka pada iterasi pertama, _value_ `item` adalah _item_ kedua dari _array_ (`arr[1]`).
+
+Lalu argumen `index` adalah indeks dari _current item_. Pada iterasi pertama, _value_ `index` adalah 0 jika `initialValue` diberikan. Namun jika `initialValue` tidak diberikan, maka pada iterasi pertama, _value_ `index` adalah 1. Sementara argumen `array` merupakan _array_ yang di-_reduce_.
+
+Sintaksnya seperti ini.
+
+```js
+arr.reduce((accumulator, item, index, array) => {
+  // ...
+}, initialValue);
+```
+
+Ini contoh sederhana cara menggunakan _method_ `reduce()`.
+
+```js
+const numbers = [10, 3, 2, 7, 5];
+const result = numbers.reduce(
+  (total, currentNumber) => total + currentNumber,
+  0
+);
+console.log(result);
+
+/*
+Output:
+27
+*/
+```
+
+## sort()
+
+_Method_ `sort()` digunakan untuk mengurutkan _item-item_ suatu _array_. _Method_ ini secara opsional menerima argumen berupa _callback function_ yang merupakan fungsi untuk komparasi. _Callback function_ tersebut menerima argumen `a` yang merupakan _item_ pertama dan `b` yang merupakan _item_ kedua untuk dibandingkan.
+
+Sintaksnya seperti ini.
+
+```js
+// Without function
+arr.sort();
+
+// With arrow function
+arr.sort((a, b) => {
+  // Returns a value
+});
+
+// With a separate comparison function
+function compareFunc(a, b) {
+  // Returns a value
+}
+arr.sort(compareFunc);
+```
+
+Jika fungsi untuk komparasi tidak diberikan, maka hasil _default_-nya adalah _item-item_ yang terurut menaik. Tiap _item_ tersebut dikonversi menjadi _string_ kemudian dibandingkan.
+
+```js
+const students = ['Harry', 'Hermione', 'Ron', 'Neville'];
+students.sort();
+console.log(students);
+
+/*
+Output:
+['Harry', 'Hermione', 'Neville', 'Ron']
+*/
+
+const numbers = [10, 3, 2, 7, 5];
+numbers.sort();
+console.log(numbers);
+
+/*
+Output:
+[10, 2, 3, 5, 7]
+*/
+```
+
+Perhatikan contoh di atas. Ketika mengurutkan _array_ dengan _item_ berupa _string_, hasilnya _item-item_ diurutkan menaik sesuai dengan kode karakter-karakternya. Namun saat mengurutkan _array_ yang _item_-nya berupa angka, hasilnya tidak sesuai dengan yang diekspektasikan. Hal itu karena angka-angka tersebut dikonversi menjadi _string_ sehingga yang dibandingkan adalah kode karakter-karakter, bukan angka. Dapat dilihat pada contoh di atas bahwa `“10” < “2”`.
+
+Kita dapat memberikan fungsi komparasi sendiri sebagai argumen _method_ `sort()`. Fungsi komparasi menerima argumen `a` yang merupakan _item_ pertama dan `b` yang merupakan _item_ kedua untuk dibandingkan. Fungsi ini me-_return_ nilai negatif, 0, atau positif.
+
+- Nilai negatif artinya _item_ pertama diposisikan lebih dulu.
+- Nilai 0 artinya posisi _item_ pertama dan _item_ kedua tetap.
+- Nilai positif artinya _item_ pertama diposisikan setelahnya.
+
+Dengan aturan seperti di atas, maka bisa dilakukan seperti berikut untuk membuat angka-angka terurut menaik, di mana angka yang lebih kecil diposisikan lebih dulu daripada angka yang lebih besar.
+
+- Jika `a < b`, return `-1`, maka `a` berada di posisi lebih dulu.
+- Jika `a > b`, return `1`, maka `a` berada di posisi setelahnya.
+- Jika `a == b`, return `0`, maka posisi keduanya tetap.
+
+```js
+function compareFunc(a, b) {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+}
+
+// Fungsi di atas dapat disederhanakan menjadi seperti ini
+function compareFunc(a, b) {
+  return a - b;
+}
+```
+
+Jika ingin mengurutkan menurun, di mana angka yang lebih besar diposisikan lebih dulu daripada angka yang lebih kecil, maka dilakukan seperti berikut.
+
+- Jika `a > b`, return `-1`, maka `a` berada di posisi lebih dulu.
+- Jika `a < b`, return `1`, maka `a` berada di posisi setelahnya.
+- Jika `a == b`, return `0`, maka posisi keduanya tetap.
+
+```js
+function compareFunc(a, b) {
+  if (a > b) return -1;
+  if (a < b) return 1;
+  return 0;
+}
+
+// Fungsi di atas dapat disederhanakan menjadi seperti ini
+function compareFunc(a, b) {
+  return b - a;
+}
+```
+
+Ini contoh sederhana penggunaan _method_ `sort()` dengan fungsi komparasi.
+
+```js
+const numbers = [10, 3, 2, 7, 5];
+numbers.sort((a, b) => a - b);
+console.log(numbers);
+
+/*
+Output:
+[2, 3, 5, 7, 10]
+*/
+
+const numbers = [10, 3, 2, 7, 5];
+numbers.sort((a, b) => b - a);
+console.log(numbers);
+
+/*
+Output:
+[10, 7, 5, 3, 2]
+*/
+```
