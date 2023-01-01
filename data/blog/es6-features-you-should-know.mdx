@@ -210,17 +210,6 @@ Operator _spread_ bisa diterapkan untuk _array_ maupun _object_.
 ```js
 /*** Spread an Array ***/
 
-const names = ['John', 'Clayton', 'Mayer'];
-console.log(...names);
-
-// The code above is the same as:
-console.log.apply(null, names);
-
-/*
-Output: 
-John Clayton Mayer
-*/
-
 const unfinishedTasks = ['Learn functional programming', 'Read a book'];
 const finishedTasks = ['Make a blog', 'Do homework', 'Attend virtual event'];
 
@@ -281,6 +270,19 @@ bio(...userDetails); // returns 'John Mayer is a Musician.'
 
 // The code above is the same as:
 bio.apply(null, userDetails); // returns 'John Mayer is a Musician.'
+```
+
+```js
+const names = ['John', 'Clayton', 'Mayer'];
+console.log(...names);
+
+// The code above is the same as:
+console.log.apply(null, names);
+
+/*
+Output: 
+John Clayton Mayer
+*/
 ```
 
 ## _Enhanced Object Properties_
