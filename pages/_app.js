@@ -34,6 +34,18 @@ function MyApp({ Component, pageProps, router }) {
           __html: getInitialThemeScript(),
         }}
       />
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-GGJ4F9Y0X2"
+      />
+      <Script strategy="afterInteractive" id="ga">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-GGJ4F9Y0X2');
+        `}
+      </Script>
       <ThemeContextProvider>
         {getLayout(<Component {...pageProps} />)}
       </ThemeContextProvider>
