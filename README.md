@@ -10,12 +10,12 @@
   </p>
   <br>
     
-  [**View the Website**](https://)
+  [**View the Website**](https://nadiannis.xyz)
 </div>
 
 ## Description
 
-**nadiannis.xyz** is Nadia's personal site. It is a platform for Nadia to showcase her projects and express herself through writings. The site is also a playground to experiment and explore things.
+**nadiannis.xyz** is Nadia's personal site. It is a platform for Nadia to showcase her projects, share what she has learned, and express herself through writing. This site is also a playground for experimenting and exploring things.
 
 ## Tech Stack
 
