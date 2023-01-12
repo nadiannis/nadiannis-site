@@ -6,22 +6,22 @@
   },
   {
     "id": "sk2",
-    "name": "Responsive Web Design",
+    "name": "Frontend Web Development",
     "category": "good at"
   },
   {
     "id": "sk3",
-    "name": "JavaScript",
+    "name": "Responsive Web Design",
     "category": "good at"
   },
   {
     "id": "sk4",
-    "name": "CSS",
+    "name": "HTML",
     "category": "good at"
   },
   {
     "id": "sk5",
-    "name": "HTML",
+    "name": "CSS",
     "category": "good at"
   },
   {
@@ -31,147 +31,137 @@
   },
   {
     "id": "sk7",
-    "name": "React.js",
+    "name": "JavaScript",
     "category": "good at"
   },
   {
     "id": "sk8",
-    "name": "Next.js",
-    "category": "familiar with"
+    "name": "React.js",
+    "category": "good at"
   },
   {
     "id": "sk9",
     "name": "Node.js",
-    "category": "familiar with"
+    "category": "good at"
   },
   {
     "id": "sk10",
-    "name": "Express.js",
-    "category": "familiar with"
+    "name": "Python",
+    "category": "good at"
   },
   {
     "id": "sk11",
-    "name": "MySQL",
-    "category": "familiar with"
+    "name": "SQL",
+    "category": "good at"
   },
   {
     "id": "sk12",
-    "name": "MongoDB",
-    "category": "familiar with"
+    "name": "Git",
+    "category": "good at"
   },
   {
     "id": "sk13",
-    "name": "Tailwind CSS",
-    "category": "familiar with"
+    "name": "Backend Development",
+    "category": "wanna learn more"
   },
   {
     "id": "sk14",
-    "name": "Bootstrap",
-    "category": "familiar with"
+    "name": "Next.js",
+    "category": "wanna learn more"
   },
   {
     "id": "sk15",
-    "name": "Figma",
-    "category": "familiar with"
+    "name": "Express.js",
+    "category": "wanna learn more"
   },
   {
     "id": "sk16",
-    "name": "Jest",
-    "category": "familiar with"
-  },
-  {
-    "id": "sk17",
-    "name": "Git",
-    "category": "familiar with"
-  },
-  {
-    "id": "sk18",
-    "name": "Python",
-    "category": "familiar with"
-  },
-  {
-    "id": "sk19",
-    "name": "REST API",
-    "category": "familiar with"
-  },
-  {
-    "id": "sk20",
-    "name": "Clean Code",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk21",
-    "name": "Refactoring",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk22",
-    "name": "Test Driven Development",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk23",
-    "name": "Software Architecture",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk24",
-    "name": "Design Patterns",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk25",
-    "name": "Software Scalability",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk26",
-    "name": "Frontend Performance",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk27",
-    "name": "Web Accessibility",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk28",
-    "name": "Cross-browser Compatibility",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk29",
-    "name": "UI Design Principles",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk30",
-    "name": "PWA",
-    "category": "wanna learn more"
-  },
-  {
-    "id": "sk31",
     "name": "TypeScript",
     "category": "wanna learn more"
   },
   {
-    "id": "sk32",
-    "name": "Java",
+    "id": "sk17",
+    "name": "Django",
     "category": "wanna learn more"
   },
   {
-    "id": "sk33",
+    "id": "sk18",
     "name": "Go",
     "category": "wanna learn more"
   },
   {
-    "id": "sk34",
+    "id": "sk19",
+    "name": "MySQL",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk20",
+    "name": "MongoDB",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk21",
     "name": "Docker",
     "category": "wanna learn more"
   },
   {
-    "id": "sk35",
-    "name": "JUCE",
+    "id": "sk22",
+    "name": "Data Structures & Algorithms",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk23",
+    "name": "REST API",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk24",
+    "name": "Clean Code",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk25",
+    "name": "Refactoring",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk26",
+    "name": "Design Patterns",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk27",
+    "name": "Test Driven Development",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk28",
+    "name": "Software Architecture",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk29",
+    "name": "Software Scalability",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk30",
+    "name": "Frontend Performance",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk31",
+    "name": "Web Accessibility",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk32",
+    "name": "Cross-browser Compatibility",
+    "category": "wanna learn more"
+  },
+  {
+    "id": "sk33",
+    "name": "PWA",
     "category": "wanna learn more"
   }
 ]

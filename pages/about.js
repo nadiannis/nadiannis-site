@@ -13,10 +13,6 @@ export default function AboutPage() {
     skills.filter((skill) => skill.category === category);
 
   const skillsGoodAt = filterSkillsByCategory(skillsData, 'good at');
-  const skillsFamiliarWith = filterSkillsByCategory(
-    skillsData,
-    'familiar with'
-  );
   const skillsWannaLearnMore = filterSkillsByCategory(
     skillsData,
     'wanna learn more'
@@ -96,10 +92,6 @@ export default function AboutPage() {
               <div className="mb-8">
                 <h3 className="mb-3">Good at</h3>
                 <BadgeList data={skillsGoodAt} />
-              </div>
-              <div className="mb-8">
-                <h3 className="mb-3">Familiar with</h3>
-                <BadgeList data={skillsFamiliarWith} />
               </div>
               <div className="mb-8">
                 <h3 className="mb-3">Wanna learn more about</h3>
