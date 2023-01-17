@@ -2,16 +2,16 @@
 title: 'Asynchronous JavaScript: Pengenalan - Part 1'
 author: 'Annisa Nadia'
 createdAt: '2022-01-01'
-updatedAt: '2022-09-26'
+updatedAt: '2023-01-18'
 summary: 'Pengenalan awal mengenai Asynchronous JavaScript'
 image: 'codes.jpg'
 ---
 
-_Asynchronous JavaScript_ merupakan hal yang kemungkinan besar dipraktekkan dalam membuat aplikasi dengan JavaScript.
-Konsep ini membantu dalam menangani hal-hal yang membutuhkan waktu yang lebih lama untuk dieksekusi.
+_Asynchronous JavaScript_ kemungkinan besar dipraktekkan dalam membuat aplikasi dengan JavaScript.
+Konsep ini membantu menangani hal-hal yang membutuhkan waktu yang lebih lama untuk dieksekusi.
 Misalnya, _request_ data dari API, menghubungkan ke _database_, dll.
 
-Artikel ini adalah bagian pertama dari seri bahasan mengenai _Asynchronous JavaScript_.
+Ini adalah bagian pertama dari seri bahasan mengenai _Asynchronous JavaScript_.
 Pada bagian-bagian selanjutnya akan dibahas mengenai _callback_, _promise_, serta _async_ & _await_.
 
 - Asynchronous JavaScript: Pengenalan - Part 1
@@ -19,12 +19,12 @@ Pada bagian-bagian selanjutnya akan dibahas mengenai _callback_, _promise_, sert
 - [Asynchronous JavaScript: Tentang Promise - Part 3](/blog/asynchronous-javascript-promise)
 - [Asynchronous JavaScript: Async & Await - Part 4](/blog/asynchronous-javascript-async-await)
 
-Sebelumnya, mari kita ketahui dulu bahwa secara _default_ JavaScript menjalankan kodenya secara _synchronous_ dan _single-threaded_.
+Sebelumnya, kita perlu tau dulu bahwa secara _default_ JavaScript menjalankan kodenya secara _synchronous_ dan _single-threaded_.
 
 ## _Single-Threaded Language_
 
-_Thread_ adalah proses tunggal yang dapat digunakan program untuk menjalankan _tasks_.
-Secara default, JavaScript itu _single-threaded_, yang berarti hanya dapat menjalankan satu _task_ dalam satu waktu pada _single thread_ (_main thread_).
+_Thread_ adalah proses tunggal yang bisa digunakan program untuk menjalankan _tasks_.
+Secara default, JavaScript itu _single-threaded_, artinya cuma bisa menjalankan satu _task_ dalam satu waktu pada _single thread_ (_main thread_).
 Setiap _task_ dalam _main thread_ dijalankan secara bertahap.
 
 Pada gambar di bawah, _Task 1_ dijalankan pertama kali.
@@ -32,27 +32,27 @@ Setelah _Task 1_ selesai, maka _Task 2_ dijalankan, dst.
 
 ![single thread](/static/images/blogs/asynchronous-javascript-introduction/single-thread.jpg)
 
-Setiap _task_ dapat memiliki waktu eksekusi yang berbeda-beda.
-Misalnya, salah satu _task_ dari gambar di atas, yaitu _Task 3_, memerlukan waktu yang lebih lama untuk dieksekusi.
-Anggap saja kita ingin mendapatkan data dari _database_ sehingga butuh waktu yang lebih lama.
-Jika dibutuhkan waktu yang lama, maka _Task 3_ dapat mem-_blocking_ kode-kode setelahnya.
+Setiap _task_ bisa punya waktu eksekusi yang beda-beda.
+Misalnya, salah satu _task_ dari gambar di atas, yaitu _Task 3_, perlu waktu yang lebih lama untuk dieksekusi.
+Anggap aja kita mau mengambil data dari _database_ sehingga butuh waktu yang lebih lama.
+Kalau dibutuhkan waktu yang lama, maka _Task 3_ dapat mem-_blocking_ kode-kode setelahnya.
 
 ## _Blocking Code_
 
-Jika terdapat potongan kode program yang berjalan secara _synchronous_ dan kode tersebut membutuhkan waktu yang lama untuk dieksekusi, maka kode tersebut dapat menjadi penghalang untuk potongan kode berikutnya, atau dapat disebut _blocking code_.
+Kalau ada potongan kode program yang berjalan secara _synchronous_ dan kode tersebut butuh waktu yang lama untuk dieksekusi, maka kode tersebut dapat menjadi penghalang untuk potongan kode berikutnya, atau dapat disebut _blocking code_.
 _User_ bisa mengira programnya berhenti/ _freeze_ karena adanya _blocking code_.
-Itulah mengapa potongan kode tertentu perlu dijalankan secara _asynchronous_ sehingga tidak menghalangi kode-kode berikutnya.
+Itulah kenapa potongan kode tertentu perlu dijalankan secara _asynchronous_ sehingga tidak menghalangi kode-kode berikutnya.
 
 ## Jadi, _Asynchronous_ itu Apa sih?
 
 Sesuatu yang berjalan secara _synchronous_ dilakukan secara bertahap dan sesuai urutan.
 _Task_ berikutnya belum bisa berjalan kalau task sebelumnya belum selesai dilakukan.
 
-Kebalikan dari _synchronous_, jika berjalan secara _asynchronous_, maka _task_ bisa berjalan tidak bertahap atau tidak sesuai dengan urutan.
+Kebalikan dari _synchronous_, kalau berjalan secara _asynchronous_, maka _task_ bisa berjalan tidak bertahap atau tidak sesuai dengan urutan.
 Untuk menjalankan _task_ berikutnya tidak perlu menunggu _task_ sebelumnya selesai dilakukan.
 
 Ini contoh kode JavaScript yang berjalan secara _synchronous_.
-Jika kode dijalankan, maka huruf a, b, c, dan d ditampilkan secara berurutan.
+Kalau kode dijalankan, maka huruf a, b, c, dan d ditampilkan secara berurutan.
 
 ```js
 const a = () => console.log('a');
@@ -74,7 +74,7 @@ d
 */
 ```
 
-Kemudian ini contoh sederhana konsep _asynchronous_ dengan kode JavaScript.
+Ini contoh sederhana konsep _asynchronous_ dengan kode JavaScript.
 
 ```js
 const a = () => console.log('a');
@@ -96,22 +96,22 @@ b
 */
 ```
 
-Dapat dilihat bahwa kode untuk mencetak huruf b diletakkan dalam suatu _callback function_.
+Bisa dilihat bahwa kode untuk mencetak huruf b diletakkan dalam suatu _callback function_.
 _Callback function_ tersebut merupakan argumen dari fungsi `setTimeout()` sehingga huruf b baru akan dicetak setelah 4000ms atau 4s.
 
 > Fungsi `setTimeout()` memanggil suatu fungsi setelah beberapa waktu. Fungsi `setTimeout()` dapat disebut _asynchronous_ karena dapat memutus alur kode yang _synchronous_, tapi sebenarnya tidak akan dieksekusi pada _thread_ yang terpisah. Fungsi `setTimeout()` merupakan Web API (pada _browser_) dan C/C++ API (pada Node.js).
 
 _Output_ dari kode di atas adalah tampilan huruf a, c, d, dan b.
-Perhatikan bahwa huruf c dan d dapat dicetak lebih dulu tanpa harus menunggu selesainya potongan kode sebelumnya.
+Bisa kita lihat, huruf c dan d dicetak lebih dulu tanpa harus menunggu selesainya potongan kode sebelumnya.
 
 ## Bagaimana Konsep _Asynchronous_ Bisa Bekerja pada JavaScript?
 
 Kode-kode JavaScript dieksekusi di dalam _JavaScript Engine_. Salah satu bagian dari _JavaScript Engine_ adalah _Call Stack_.
-Karena JavaScript itu _single-threaded_, maka JavaScript hanya memiliki satu _Call Stack_.
+Karena JavaScript itu _single-threaded_, maka JavaScript cuma punya satu _Call Stack_.
 
 Seperti struktur data _stack_ pada umumnya, *Call Stack* menerapkan konsep LIFO (_Last in, First out_).
-Jika suatu fungsi dipanggil, maka fungsi tersebut akan masuk ke dalam _Call Stack_.
-Ketika fungsi sudah me-_return_ suatu nilai atau sudah selesai dieksekusi, maka fungsi tersebut akan keluar dari _Call Stack_.
+Kalau suatu fungsi dipanggil, fungsi tersebut akan masuk ke dalam _Call Stack_.
+Kalau fungsi sudah me-_return_ suatu nilai atau sudah selesai dieksekusi, maka fungsi tersebut akan keluar dari _Call Stack_.
 
 Pada contoh kode konsep _asynchronous_ di atas, fungsi `a()` dipanggil pertama kali, maka fungsi `a()` masuk ke dalam _Call Stack_.
 Fungsi `a()` dieksekusi dan menjalankan _method_ `console.log()` sehingga tampil huruf a. Setelah selesai dieksekusi, fungsi `a()` keluar dari _Call Stack_.
@@ -119,23 +119,23 @@ Fungsi `a()` dieksekusi dan menjalankan _method_ `console.log()` sehingga tampil
 ![call stack](/static/images/blogs/asynchronous-javascript-introduction/call-stack.jpg)
 
 Untuk menjalankan kode secara _asynchronous_, _JavaScript Runtime Environment_ pada _browser_ atau Node.js menyediakan fitur Web API atau C/C++ API, _Callback Queue_, dan _Event Loop_.
-Hal-hal tersebut bukan bagian dari _JavaScript Engine_ sehingga _task_ dapat dijalankan secara _asynchronous_ di dalam Web API (atau C/C++ API).
+Hal-hal itu bukan bagian dari _JavaScript Engine_ sehingga _task_ bisa dijalankan secara _asynchronous_ di dalam Web API (atau C/C++ API).
 
 ![call stack, web api, callback queue, event loop](/static/images/blogs/asynchronous-javascript-introduction/js-engine-and-browser.jpg)
 
-Perhatikan kembali contoh kode konsep _asynchronous_ sebelumnya. Fungsi `b()` dipanggil setelah fungsi `a()`, maka fungsi `b()` masuk ke dalam _Call Stack_ setelah fungsi `a()` keluar.
+Coba lihat lagi contoh kode konsep _asynchronous_ sebelumnya. Fungsi `b()` dipanggil setelah fungsi `a()`, maka fungsi `b()` masuk ke dalam _Call Stack_ setelah fungsi `a()` keluar.
 Fungsi `b()` dieksekusi dan menjalankan fungsi `setTimeout()` yang merupakan Web API yang disediakan _browser_ (atau C/C++ API pada Node.js).
 
-_Callback function_ yang merupakan argumen fungsi `setTimeout()` ditambahkan ke dalam Web API. _Timer_ pun mulai dijalankan saat _callback function_ ditambahkan ke dalam Web API.
-Kemudian di dalam _Call Stack_, fungsi `setTimeout()` dan `b()` keluar dari _Call Stack_.
+_Callback function_ yang merupakan argumen fungsi `setTimeout()` ditambahkan ke dalam Web API. _Timer_ mulai dijalankan saat _callback function_ ditambahkan ke dalam Web API.
+Di dalam _Call Stack_, fungsi `setTimeout()` dan `b()` keluar dari _Call Stack_.
 
-Setelah _callback function_ ditambahkan ke dalam Web API & fungsi `b()` keluar dari _Call Stack_, maka fungsi `c()` dapat masuk ke dalam _Call Stack_, dieksekusi, menjalankan `console.log()` sehingga tampil huruf c, kemudian fungsi `c()` keluar dari _Call Stack_.
+Setelah _callback function_ ditambahkan ke dalam Web API & fungsi `b()` keluar dari _Call Stack_, maka fungsi `c()` bisa masuk ke dalam _Call Stack_, dieksekusi, menjalankan `console.log()` sehingga tampil huruf c, kemudian fungsi `c()` keluar dari _Call Stack_.
 Selanjutnya fungsi `d()` masuk ke dalam _Call Stack_, dieksekusi, menjalankan `console.log()` sehingga tampil huruf d, kemudian fungsi `d()` keluar dari _Call Stack_.
 
 Setelah _timer_ sudah berjalan sesuai nilai argumen kedua (4000ms) dari fungsi `setTimeout()`, maka _callback function_ tidak langsung masuk ke dalam _Call Stack_, tapi dipindahkan dulu ke dalam _Callback Queue_.
 
 Terdapat _Event Loop_ yang menghubungkan _Call Stack_ dengan _Callback Queue_.
-Jika _Call Stack_ kosong (artinya fungsi-fungsi sebelumnya sudah selesai dieksekusi & keluar dari _Call Stack_), maka _item_ pertama di dalam _Callback Queue_ ditambahkan ke dalam _Call Stack_ menggunakan _Event Loop_.
+Kalau _Call Stack_ kosong (artinya fungsi-fungsi sebelumnya sudah selesai dieksekusi & keluar dari _Call Stack_), maka _item_ pertama di dalam _Callback Queue_ ditambahkan ke dalam _Call Stack_ menggunakan _Event Loop_.
 Saat berada di dalam _Call Stack_, _callback function_ dieksekusi, menjalankan `console.log()` sehingga menampilkan huruf b, kemudian keluar dari _Call Stack_.
 
 > Untuk memvisualisasikan bagaimana _Call Stack_, Web API, _Callback Queue_, dan _Event Loop_ saling berinteraksi, bisa coba tulis kode yang diinginkan di [situs ini](http://latentflip.com/loupe), kemudian jalankan dan lihat hasilnya.
