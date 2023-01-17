@@ -48,10 +48,10 @@ export default function BlogPage({ blog }) {
           <article className="blog max-w-screen-md mx-auto">
             <header>
               <h1 className="text-5xl sm:text-6xl inline-block m-0">{title}</h1>
-              <div className="text-md text-muted mt-6">
+              <div className="text-md text-muted mt-6 ">
                 <span className="block font-bold">{author}</span>
                 <span>{formattedDateCreated}</span> &middot;{' '}
-                <span>{readingTime}</span>
+                <span>{readingTime}</span> &middot; <span>___ views</span>
               </div>
               <div className="mt-6 pb-2">
                 <Image
