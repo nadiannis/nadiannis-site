@@ -14,7 +14,7 @@ export default function BlogCard({ blog }) {
   });
 
   return (
-    <li className="rounded-4px">
+    <li className="rounded-4px transform hover:translate-y-1 hover:scale-95 transition duration-100 ease-in-out">
       <Link href={linkPath}>
         <a href={linkPath}>
           <Image
