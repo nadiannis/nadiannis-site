@@ -1,26 +1,20 @@
 [
   {
-    "id": "in1",
     "name": "Digital Product Creation"
   },
   {
-    "id": "in2",
     "name": "Self-development"
   },
   {
-    "id": "in3",
     "name": "Education"
   },
   {
-    "id": "in4",
     "name": "Open-source"
   },
   {
-    "id": "in5",
     "name": "Art"
   },
   {
-    "id": "in6",
     "name": "Audio Engineering"
   }
 ]

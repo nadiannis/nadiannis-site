@@ -4,7 +4,7 @@ export default function BadgeList({ data }) {
   return (
     <ul className="flex gap-3 flex-wrap">
       {data.map((item) => (
-        <Badge key={item.id}>{item.name}</Badge>
+        <Badge key={item.name}>{item.name}</Badge>
       ))}
     </ul>
   );

@@ -1,18 +1,14 @@
 [
   {
-    "id": "val1",
     "name": "Independence"
   },
   {
-    "id": "val2",
     "name": "Personal Growth"
   },
   {
-    "id": "val3",
     "name": "Contribution"
   },
   {
-    "id": "val4",
     "name": "Contentment"
   }
 ]

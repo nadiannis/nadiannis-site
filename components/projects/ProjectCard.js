@@ -6,11 +6,11 @@ import Button from '@/components/ui/Button';
 export default function ProjectCard({ project }) {
   const tools = project.tools.map((tool, index) => {
     if (index === project.tools.length - 1) {
-      return <span key={tool.id}>{tool.name}</span>;
+      return <span key={tool}>{tool}</span>;
     }
     return (
-      <Fragment key={tool.id}>
-        <span>{tool.name}</span> &middot;{' '}
+      <Fragment key={tool}>
+        <span>{tool}</span> &middot;{' '}
       </Fragment>
     );
   });
