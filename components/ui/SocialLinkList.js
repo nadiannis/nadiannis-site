@@ -5,12 +5,6 @@ import SocialLink from './SocialLink';
 
 const socials = [
   {
-    id: 'email',
-    url: 'mailto:annisanadianeyla@gmail.com',
-    icon: IoMdMail,
-    hasBackground: true,
-  },
-  {
     id: 'github',
     url: 'https://github.com/nadiannis',
     icon: IoLogoGithub,
@@ -27,6 +21,12 @@ const socials = [
     url: 'https://codepen.io/nadiannis',
     icon: IoLogoCodepen,
     hasBackground: false,
+  },
+  {
+    id: 'email',
+    url: 'mailto:annisanadianeyla@gmail.com',
+    icon: IoMdMail,
+    hasBackground: true,
   },
 ];
 
