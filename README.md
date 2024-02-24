@@ -2,7 +2,7 @@
   <br>
   <a href="https://"><img width="96" height="96" src="https://raw.githubusercontent.com/nadiannis/nadiannis-site/develop/public/static/favicons/ms-icon-310x310.png"></a>
   <br>
-  <h1><strong>nadiannis.xyz</strong></h1>
+  <h1><strong>nadiannis.com</strong></h1>
   <p>🏡 A personal site of Annisa Nadia Neyla 🏡</p>
   <br>
   <p align="center">
@@ -10,12 +10,12 @@
   </p>
   <br>
     
-  [**View the Website**](https://nadiannis.xyz)
+  [**View the Website**](https://nadiannis.com)
 </div>
 
 ## Description
 
-**nadiannis.xyz** is Nadia's personal site. It is a platform for Nadia to showcase her projects, share what she has learned, and express herself through writing. This site is also a playground for experimenting and exploring things.
+**nadiannis.com** is Nadia's personal site. It is a platform for Nadia to showcase her projects, share what she has learned, and express herself through writing. This site is also a playground for experimenting and exploring things.
 
 ## Tech Stack
 
