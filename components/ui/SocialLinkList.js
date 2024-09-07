@@ -1,4 +1,9 @@
-import { IoMdMail, IoLogoGithub, IoLogoCodepen } from 'react-icons/io';
+import {
+  IoMdMail,
+  IoLogoGithub,
+  IoLogoTwitter,
+  IoLogoYoutube,
+} from 'react-icons/io';
 import { RiLinkedinFill } from 'react-icons/ri';
 
 import SocialLink from './SocialLink';
@@ -17,10 +22,16 @@ const socials = [
     hasBackground: true,
   },
   {
-    id: 'codepen',
-    url: 'https://codepen.io/nadiannis',
-    icon: IoLogoCodepen,
-    hasBackground: false,
+    id: 'twitter',
+    url: 'https://twitter.com/nadiannis',
+    icon: IoLogoTwitter,
+    hasBackground: true,
+  },
+  {
+    id: 'youtube',
+    url: 'https://www.youtube.com/@nadiannis',
+    icon: IoLogoYoutube,
+    hasBackground: true,
   },
   {
     id: 'email',

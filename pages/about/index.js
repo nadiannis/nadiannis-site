@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import valuesData from '@/data/values.json';
-import skillsData from '@/data/skills.json';
 import interestsData from '@/data/interests.json';
 
 import Layout from '@/components/layouts/Layout';
@@ -9,15 +8,6 @@ import Container from '@/components/ui/Container';
 import BadgeList from '@/components/badges/BadgeList';
 
 export default function AboutPage() {
-  const filterSkillsByCategory = (skills, category) =>
-    skills.filter((skill) => skill.category === category);
-
-  const skillsGoodAt = filterSkillsByCategory(skillsData, 'good at');
-  const skillsWannaLearnMore = filterSkillsByCategory(
-    skillsData,
-    'wanna learn more'
-  );
-
   return (
     <>
       <Head>
@@ -82,20 +72,6 @@ export default function AboutPage() {
               </h2>
               <div className="mb-8">
                 <BadgeList data={valuesData} />
-              </div>
-            </div>
-
-            <div className="mt-12">
-              <h2 className="mb-5 text-xl border-b dark:border-gray-800">
-                Skills
-              </h2>
-              <div className="mb-8">
-                <h3 className="mb-3">Good at</h3>
-                <BadgeList data={skillsGoodAt} />
-              </div>
-              <div className="mb-8">
-                <h3 className="mb-3">Wanna learn more about</h3>
-                <BadgeList data={skillsWannaLearnMore} />
               </div>
             </div>
 
