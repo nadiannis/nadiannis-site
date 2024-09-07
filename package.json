@@ -15,9 +15,9 @@
   },
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && next dev",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && next build",
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && next start",
     "check:all": "npm run lint:check && npm run prettier:check",
     "fix:all": "npm run lint:fix && npm run prettier:format",
     "lint:check": "next lint",
@@ -52,8 +52,8 @@
     "husky": "^7.0.0",
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
-    "stylelint": "^13.13.1",
-    "stylelint-config-standard": "^22.0.0",
+    "stylelint": "^16.9.0",
+    "stylelint-config-standard": "^36.0.1",
     "tailwindcss": "^2.2.4"
   }
 }
