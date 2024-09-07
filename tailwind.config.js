@@ -58,6 +58,9 @@ module.exports = {
       width: {
         '11/12': '90%',
       },
+      minWidth: {
+        '9/20': '45%',
+      },
       borderRadius: {
         '4px': '4px',
       },

@@ -1,10 +1,49 @@
 [
   {
-    "name": "COVA",
-    "description": "A minimal & modern coffee shop one-page site. I design the UI, implement it into front-end code using modern build tools, and deploy the page on a web hosting.",
-    "tools": ["HTML5", "CSS3", "JavaScript", "Sass", "Webpack", "Figma"],
-    "demoUrl": "https://covaweb.netlify.app",
-    "codeUrl": "https://github.com/nadiannis/cova",
-    "image": "/static/images/projects/cova.jpg"
+    "name": "Stn",
+    "description": "A web-based app for shortening long links & managing them in one place. I designed & developed all parts of the app from scratch.",
+    "tools": ["Go", "SQL", "MySQL", "JavaScript", "HTML5", "CSS3", "Git"],
+    "demoUrl": "",
+    "codeUrl": "https://github.com/nadiannis/stn",
+    "image": "/static/images/projects/stn.jpg"
+  },
+  {
+    "name": "Prosentra",
+    "description": "A crowdsourcing platform to discover programming learning resources. I designed, developed, & deployed all parts of the app: the frontend app, the API, & the database.",
+    "tools": [
+      "Django REST Framework",
+      "MySQL",
+      "React.js",
+      "Material UI",
+      "Git",
+      "Figma"
+    ],
+    "demoUrl": "",
+    "codeUrl": "",
+    "image": "/static/images/projects/prosentra.jpg"
+  },
+  {
+    "name": "Tokoplay",
+    "description": "A web app that can enhance shopping experience through videos. I designed, developed, documented, & deployed the frontend app, the API, & the database within a 2-week timeframe.",
+    "tools": [
+      "Express",
+      "Mongoose",
+      "MongoDB",
+      "React.js",
+      "Tailwind CSS",
+      "daisyUI",
+      "Git"
+    ],
+    "demoUrl": "https://tokoplay.vercel.app",
+    "codeUrl": "https://github.com/nadiannis/tokoplay-web",
+    "image": "/static/images/projects/tokoplay.jpg"
+  },
+  {
+    "name": "Chordion",
+    "description": "A handy reference for chord construction. I designed the UI, implemented it into frontend code using modern build tools, & deployed the site on a web hosting.",
+    "tools": ["React.js", "Tailwind CSS", "tonal", "howler.js", "Git", "Figma"],
+    "demoUrl": "https://chordion.vercel.app",
+    "codeUrl": "https://github.com/nadiannis/chordion",
+    "image": "/static/images/projects/chordion.jpg"
   }
 ]
