@@ -15,9 +15,9 @@
   },
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && next dev",
-    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && next build",
-    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && next start",
+    "dev": "set NODE_OPTIONS=--openssl-legacy-provider && next dev",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && next build",
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && next start",
     "check:all": "npm run lint:check && npm run prettier:check",
     "fix:all": "npm run lint:fix && npm run prettier:format",
     "lint:check": "next lint",
