@@ -1,0 +1,527 @@
+---
+title: 'Nested Struct vs Embedded Struct dalam Go'
+author: 'Annisa Nadia'
+createdAt: '2024-09-09'
+updatedAt: '2024-09-09'
+summary: 'Dalam bahasa Go, kita dapat merepresentasikan objek yang lebih kompleks dengan membuat struct yang dibentuk dari struct lain, dengan cara nested maupun embedded. Pada artikel ini dibahas perbedaan utama antara nested struct dengan embedded struct.'
+image: 'wooden-blocks.jpg'
+---
+
+Dalam bahasa Go, kita bisa membuat tipe data sendiri yang menggabungkan banyak tipe data. Itu dibuat dengan menggunakan _keyword_ `struct`. Untuk merepresentasikan objek yang lebih kompleks, suatu `struct` bisa dibentuk dengan menggunakan `struct` lain, dengan cara _nested_ atau _embedded_. Saat pertama kali belajar Go, saya cukup bingung membedakan _nested struct_ dengan _embedded struct_. Masing-masing punya sintaks dan karakteristik yang beda.
+
+## _Nested Struct_
+
+Suatu `struct` yang digunakan sebagai tipe _field_ di dalam `struct` lain bisa disebut _nested struct_. Ini contoh _nested struct:_
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Street string
+	City   string
+}
+
+func (a Address) Print() {
+	fmt.Printf("%s, %s\n", a.Street, a.City)
+}
+
+type Person struct {
+	Name    string
+	Age     int
+	Address Address // Nested struct
+}
+
+func main() {
+	person := Person{
+		Name: "John",
+		Age:  46,
+		Address: Address{
+			Street: "Durian Street",
+			City:   "Bandung",
+		},
+	}
+
+	fmt.Println(person.Name)           // Output: John
+	fmt.Println(person.Age)            // Output: 46
+	fmt.Println(person.Address.Street) // Output: Durian Street
+	fmt.Println(person.Address.City)   // Output: Bandung
+	person.Address.Print()             // Output: Durian Street, Bandung
+}
+```
+
+Pada kode di atas, terdapat tipe `Address` dan tipe `Person`. Tipe `Address` memiliki _field_ `Street` dan `City`, juga _method_ `Print()`. Tipe `Person` memiliki _field_ `Name`, `Age`, dan `Address`.
+
+Tipe `Address` merupakan _nested struct_ karena digunakan sebagai tipe dari _field_ `Address` yang ada di dalam `Person`. Perhatikan bahwa _field_ `Street` dan `City`, serta _method_ `Print()`, hanya bisa diakses melalui _field_ `Address` yang dimiliki `Person`.
+
+```go
+fmt.Println(person.Address.Street) // Output: Durian Street
+fmt.Println(person.Address.City)   // Output: Bandung
+person.Address.Print()             // Output: Durian Street, Bandung
+```
+
+## _Embedded Struct_
+
+Suatu `struct` yang digunakan di dalam `struct` lain tanpa menuliskan nama _field_ disebut _embedded struct_. Dengan _embedded struct_, kita bisa menggunakan kembali (_reuse_) _field_ dan _method_ `struct` yang di-_embed_. Ini mirip dengan _inheritance_ pada bahasa pemrograman lain.
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Street string
+	City   string
+}
+
+func (a Address) Print() {
+	fmt.Printf("%s, %s\n", a.Street, a.City)
+}
+
+type Person struct {
+	Name    string
+	Age     int
+	Address // Embedded struct
+}
+
+func main() {
+	person := Person{
+		Name: "John",
+		Age:  46,
+		Address: Address{
+			Street: "Durian Street",
+			City:   "Bandung",
+		},
+	}
+
+	fmt.Println(person.Name)   // Output: John
+	fmt.Println(person.Age)    // Output: 46
+	fmt.Println(person.Street) // Output: Durian Street
+	fmt.Println(person.City)   // Output: Bandung
+	person.Print()             // Output: Durian Street, Bandung
+}
+```
+
+Seperti contoh kode sebelumnya, terdapat tipe `Address` dan tipe `Person`. Tipe `Address` memiliki _field_ `Street` dan `City`, juga _method_ `Print()`. Tipe `Person` memiliki _field_ `Name`, `Age`, dan `Address`.
+
+Tapi kali ini tipe `Address` digunakan di dalam `Person` secara langsung tanpa menuliskannya sebagai tipe dari _field_ di dalam `Person`. `Address` bisa disebut sebagai _embedded struct_. Perhatikan bahwa kali ini _field_ `Street` dan `City`, serta _method_ `Print()`, bisa diakses langsung dari objek `Person`.
+
+```go
+fmt.Println(person.Street) // Output: Durian Street
+fmt.Println(person.City)   // Output: Bandung
+person.Print()             // Output: Durian Street, Bandung
+```
+
+## Mengakses _Field_
+
+### Gimana Kalau Ada Nama yang Sama dari Dua Struct dengan Tingkatan yang Beda?
+
+#### _Embedded Struct_
+
+Misalnya ada tipe `Address` dan `Person`. Tipe `Address` punya _method_ `Print()`, _field_ `Street`, _field_ `City`, dan _field_ `Country`. Tipe `Person` punya _field_ `Name`, `Age`, dan `Address`. Pada program di bawah, kita memberikan _value_ `“Indonesia”` untuk _field_ `Country` yang dimiliki `Address`.
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Street  string
+	City    string
+	Country string
+}
+
+func (a Address) Print() {
+	fmt.Printf("%s, %s, %s\n", a.Street, a.City, a.Country)
+}
+
+type Person struct {
+	Name    string
+	Age     int
+	Address // Embedded struct
+}
+
+func main() {
+	person := Person{
+		Name: "John",
+		Age:  46,
+		Address: Address{
+			Street:  "Durian Street",
+			City:    "Bandung",
+			Country: "Indonesia",
+		},
+	}
+
+	fmt.Println(person.Name)    // Output: John
+	fmt.Println(person.Age)     // Output: 46
+	fmt.Println(person.Street)  // Output: Durian Street
+	fmt.Println(person.City)    // Output: Bandung
+	fmt.Println(person.Country) // Output: Indonesia
+	person.Print()              // Output: Durian Street, Bandung, Indonesia
+}
+```
+
+Kalau program di atas dijalankan, maka `person.Country` menghasilkan _value_ `“Indonesia”`.
+
+```go
+fmt.Println(person.Country) // Output: Indonesia
+```
+
+Sekarang coba kita tambahkan _field_ `Country` di dalam `Person`. Perhatikan bahwa sekarang terdapat dua _field_ dengan nama yang sama, tapi dimiliki `struct` yang beda. _Field_ `Country` ada di dalam `Person`, tapi _field_ `Country` juga ada di dalam `Address`. Pada program di bawah, kita memberikan _value_ `“Indonesia”` untuk _field_ `Country` yang dimiliki `Address`. Tapi untuk _field_ `Country` yang dimiliki langsung oleh `Person`, kita berikan _value_ `“Australia”`.
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Street  string
+	City    string
+	Country string
+}
+
+func (a Address) Print() {
+	fmt.Printf("%s, %s, %s\n", a.Street, a.City, a.Country)
+}
+
+type Person struct {
+	Name    string
+	Age     int
+	Country string
+	Address // Embedded struct
+}
+
+func main() {
+	person := Person{
+		Name:    "John",
+		Age:     46,
+		Country: "Australia",
+		Address: Address{
+			Street:  "Durian Street",
+			City:    "Bandung",
+			Country: "Indonesia",
+		},
+	}
+
+	fmt.Println(person.Name)    // Output: John
+	fmt.Println(person.Age)     // Output: 46
+	fmt.Println(person.Street)  // Output: Durian Street
+	fmt.Println(person.City)    // Output: Bandung
+	fmt.Println(person.Country) // Output: Australia
+	person.Print()              // Output: Durian Street, Bandung, Indonesia
+}
+```
+
+Kalau program di atas dijalankan, maka `person.Country` menghasilkan _value_ `“Australia”`, bukan `“Indonesia”`. Itu terjadi karena menambahkan _field_ `Country` di tingkatan/ lapisan yang lebih tinggi, akan menyembunyikan _field_ `Country` yang ada di tingkatan/ lapisan `struct` yang lebih dalam.
+
+```go
+fmt.Println(person.Country) // Output: Australia
+```
+
+#### _Nested Struct_
+
+Sebelumnya kita sudah melihat bahwa menambahkan _field_ `X` di tingkatan/ lapisan yang lebih tinggi, akan menyembunyikan _field_ `X` yang ada di tingkatan/ lapisan `struct` yang lebih dalam. Dengan catatan, _field_ `X` di tingkatan/ lapisan `struct` lebih dalam itu didapatkan dari `struct` yang di-_embed_ (_embedded struct_).
+
+Hal itu tidak akan terjadi kalau ada _field_ yang namanya sama dengan _field_ yang dimiliki _nested struct_. Ini contohnya:
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Street  string
+	City    string
+	Country string
+}
+
+func (a Address) Print() {
+	fmt.Printf("%s, %s, %s\n", a.Street, a.City, a.Country)
+}
+
+type Person struct {
+	Name    string
+	Age     int
+	Country string
+	Address Address // Nested struct
+}
+
+func main() {
+	person := Person{
+		Name:    "John",
+		Age:     46,
+		Country: "Australia",
+		Address: Address{
+			Street:  "Durian Street",
+			City:    "Bandung",
+			Country: "Indonesia",
+		},
+	}
+
+	fmt.Println(person.Name)            // Output: John
+	fmt.Println(person.Age)             // Output: 46
+	fmt.Println(person.Country)         // Output: Australia
+	fmt.Println(person.Address.Street)  // Output: Durian Street
+	fmt.Println(person.Address.City)    // Output: Bandung
+	fmt.Println(person.Address.Country) // Output: Indonesia
+	person.Address.Print()              // Output: Durian Street, Bandung
+}
+```
+
+Misalnya ada tipe `Address` dan `Person`. Tipe `Address` punya _method_ `Print()`, _field_ `Street`, _field_ `City`, dan _field_ `Country`. Tipe `Person` punya _field_ `Name`, `Age`, `Country`, dan `Address`. _Field_ `Country` yang dimiliki langsung oleh `Person`, kita berikan _value_ `“Australia”`. Sementara _field_ `Country` yang dimiliki `Address`, kita berikan _value_ `“Indonesia”`.
+
+Kalau program di atas dijalankan, maka `person.Country` menghasilkan _value_ `“Australia”`, sementara `person.Address.Country` menghasilkan _value_ `“Indonesia”`. Hal tersebut sesuai dengan ekspektasi, karena untuk mengakses _field_ yang dimiliki _nested struct_ memang harus melalui nama _field_ yang secara eksplisit diberikan di dalam `struct` di mana _nested struct_ itu berada. Mudah bagi komputer untuk menentukan _value_ dari _field_ `Country` mana yang perlu diambil.
+
+```go
+fmt.Println(person.Country)         // Output: Australia
+fmt.Println(person.Address.Country) // Output: Indonesia
+```
+
+### Gimana Kalau Ada Nama yang Sama dari Dua Struct dengan Tingkatan yang Sama?
+
+#### _Embedded Struct_
+
+Misalnya ada `struct` yang punya nama _field_ dan _method_ yang sama. Pada contoh di bawah, ada tipe `Address` dan tipe `Birthplace`. Tipe `Address` punya _method_ `Print()`, _field_ `Street`, _field_ `City`. Tipe `Birthplace` punya _method_ `Print()`, _field_ `City`, dan _field_ `Country`. Perhatikan bahwa tipe `Address` dan tipe `Birthplace` sama-sama punya _field_ `City` dan _method_ `Print()`.
+
+Tipe `Address` dan tipe `Birthplace` di-_embed_ ke dalam tipe `Person`. `Address` dan `Birthplace` bisa disebut sebagai _embedded struct_.
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Street string
+	City   string
+}
+
+func (a Address) Print() {
+	fmt.Printf("%s, %s\n", a.Street, a.City)
+}
+
+type Birthplace struct {
+	City    string
+	Country string
+}
+
+func (b Birthplace) Print() {
+	fmt.Printf("%s, %s\n", b.City, b.Country)
+}
+
+type Person struct {
+	Name       string
+	Age        int
+	Address    // Embedded struct
+	Birthplace // Embedded struct
+}
+
+func main() {
+	person := Person{
+		Name: "John",
+		Age:  46,
+		Address: Address{
+			Street: "Durian Street",
+			City:   "Bandung",
+		},
+		Birthplace: Birthplace{
+			City:    "Jakarta",
+			Country: "Indonesia",
+		},
+	}
+
+	fmt.Println(person.Name)   // Output: John
+	fmt.Println(person.Age)    // Output: 46
+	fmt.Println(person.Street) // Output: Durian Street
+	fmt.Println(person.City)   // Output: error
+	person.Print()             // Output: error
+}
+```
+
+Program di atas tidak akan bisa di-_compile_ karena ada nama _field_ dan _method_ yang sama di tingkat yang sama. Seperti yang kita ketahui, `struct` yang di-_embed_ akan membagikan _field_ dan _method_ yang dimilikinya ke `struct` di mana dia di-_embed_. Kita jadi bisa mengakses _field_ dan _method_ yang dimiliki `Address` dan `Birthplace` langsung dari `Person`.
+
+Tapi karena `Address` dan `Birthplace` sama-sama punya _field_ dengan nama `City` dan _method_ dengan nama `Print()`, ada kebingungan harus mengambil dari `struct` yang mana, dan program jadi tidak bisa di-_compile_.
+
+Kalau _field_ `City` dan _method_ `Print()` tidak digunakan, program tetap bisa di-_compile_ dan tidak akan menghasilkan _error_. Kode di bawah sama seperti contoh kode sebelumnya, tapi bagian akses _field_ `City` dan pemanggilan _method_ `Print()` dijadikan komentar.
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Street string
+	City   string
+}
+
+func (a Address) Print() {
+	fmt.Printf("%s, %s\n", a.Street, a.City)
+}
+
+type Birthplace struct {
+	City    string
+	Country string
+}
+
+func (b Birthplace) Print() {
+	fmt.Printf("%s, %s\n", b.City, b.Country)
+}
+
+type Person struct {
+	Name       string
+	Age        int
+	Address    // Embedded struct
+	Birthplace // Embedded struct
+}
+
+func main() {
+	person := Person{
+		Name: "John",
+		Age:  46,
+		Address: Address{
+			Street: "Durian Street",
+			City:   "Bandung",
+		},
+		Birthplace: Birthplace{
+			City:    "Jakarta",
+			Country: "Indonesia",
+		},
+	}
+
+	fmt.Println(person.Name)   // Output: John
+	fmt.Println(person.Age)    // Output: 46
+	fmt.Println(person.Street) // Output: Durian Street
+	// fmt.Println(person.City)   // Output: error
+	// person.Print()             // Output: error
+}
+```
+
+Untuk tetap bisa mengakses _field_ `City` dan _method_ `Print()`, kita bisa mengaksesnya melalui masing-masing `struct` yang di-_embed_ ke dalam `Person`.
+
+```go
+fmt.Println(person.Address.City)    // Output: Bandung
+person.Address.Print()              // Output: Durian Street, Bandung
+fmt.Println(person.Birthplace.City) // Output: Jakarta
+person.Birthplace.Print()           // Output: Jakarta, Indonesia
+```
+
+Ini kodenya secara keseluruhan:
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Street string
+	City   string
+}
+
+func (a Address) Print() {
+	fmt.Printf("%s, %s\n", a.Street, a.City)
+}
+
+type Birthplace struct {
+	City    string
+	Country string
+}
+
+func (b Birthplace) Print() {
+	fmt.Printf("%s, %s\n", b.City, b.Country)
+}
+
+type Person struct {
+	Name       string
+	Age        int
+	Address    // Embedded struct
+	Birthplace // Embedded struct
+}
+
+func main() {
+	person := Person{
+		Name: "John",
+		Age:  46,
+		Address: Address{
+			Street: "Durian Street",
+			City:   "Bandung",
+		},
+		Birthplace: Birthplace{
+			City:    "Jakarta",
+			Country: "Indonesia",
+		},
+	}
+
+	fmt.Println(person.Name)   // Output: John
+	fmt.Println(person.Age)    // Output: 46
+	fmt.Println(person.Street) // Output: Durian Street
+	// fmt.Println(person.City) // Output: error
+	// person.Print()           // Output: error
+
+	fmt.Println(person.Address.City)    // Output: Bandung
+	person.Address.Print()              // Output: Durian Street, Bandung
+	fmt.Println(person.Birthplace.City) // Output: Jakarta
+	person.Birthplace.Print()           // Output: Jakarta, Indonesia
+}
+```
+
+#### _Nested Struct_
+
+Dari bagian sebelumnya, kita tau kalau ada nama yang sama pada _embedded struct_ dan nama tersebut diakses langsung dari `struct` di mana _embedded struct_ itu ada, maka program tidak bisa di-_compile_. Hal itu tidak akan terjadi pada _nested struct_.
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Street string
+	City   string
+}
+
+func (a Address) Print() {
+	fmt.Printf("%s, %s\n", a.Street, a.City)
+}
+
+type Birthplace struct {
+	City    string
+	Country string
+}
+
+func (b Birthplace) Print() {
+	fmt.Printf("%s, %s\n", b.City, b.Country)
+}
+
+type Person struct {
+	Name       string
+	Age        int
+	Address    Address    // Nested struct
+	Birthplace Birthplace // Nested struct
+}
+
+func main() {
+	person := Person{
+		Name: "John",
+		Age:  46,
+		Address: Address{
+			Street: "Durian Street",
+			City:   "Bandung",
+		},
+		Birthplace: Birthplace{
+			City:    "Jakarta",
+			Country: "Indonesia",
+		},
+	}
+
+	fmt.Println(person.Name)            // Output: John
+	fmt.Println(person.Age)             // Output: 46
+	fmt.Println(person.Address.Street)  // Output: Durian Street
+	fmt.Println(person.Address.City)    // Output: Bandung
+	person.Address.Print()              // Output: Durian Street, Bandung
+	fmt.Println(person.Birthplace.City) // Output: Jakarta
+	person.Birthplace.Print()           // Output: Jakarta, Indonesia
+}
+```
+
+Pada contoh di atas, kita bisa lihat bahwa tipe `Address` dan tipe `Birthplace` sama-sama punya _field_ `City` dan _method_ `Print()`. Tipe `Address` dan tipe `Birthplace` dijadikan sebagai tipe _field_ yang ada di dalam `Person`. `Address` dan `Birthplace` bisa disebut sebagai _nested struct_.
+
+_Field_ `City` dan _method_ `Print()` dari tipe `Address` dan tipe `Birthplace` masing-masing diakses melalui _field_ `Address` dan _field_ `Birthplace` yang dimiliki `Person`. Kalau program di atas dijalankan, program itu akan berjalan dengan sesuai. Kita tidak akan melihat _error._
