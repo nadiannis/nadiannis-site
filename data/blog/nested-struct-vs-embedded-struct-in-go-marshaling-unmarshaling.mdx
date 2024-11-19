@@ -1,0 +1,204 @@
+---
+title: 'Nested Struct vs Embedded Struct di Go: Marshaling dan Unmarshaling - Part 2'
+author: 'Annisa Nadia'
+createdAt: '2024-11-19'
+updatedAt: '2024-11-19'
+summary: 'Dalam bahasa Go, kita dapat merepresentasikan objek yang lebih kompleks dengan membuat struct yang dibentuk dari struct lain, dengan cara nested maupun embedded. Pada artikel ini dibahas perbedaan hasil dari proses marshal dan umarshal suatu struct yang memiliki nested struct dan embedded struct.'
+image: 'wooden-blocks.jpg'
+---
+
+Pada artikel sebelumnya, kita telah membahas perbedaan utama antara _nested struct_ dengan _embedded struct_. Sekarang kita akan coba lihat perbedaan hasil dari proses _marshal_ dan _umarshal_ `struct` yang di dalamnya memiliki _nested struct_ dan _embedded struct_. Kita juga akan melihat beberapa keunikan yang mungkin terjadi jika `struct` tersebut di-_marshal_ atau di-_unmarshal_.
+
+## Marshaling
+
+_Marshaling_ adalah proses mengubah struktur data Go menjadi serangkaian _byte_, seperti JSON. Kita bisa mengubah tipe `struct` menjadi JSON. Berikut ini perbedaan hasil dari proses marshal pada `struct` yang memiliki _nested struct_ dan `struct` yang memiliki _embedded struct_.
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type Address struct {
+	Street  string
+	City    string
+	Country string
+}
+
+type Person struct {
+	Name    string
+	Age     int
+	Address Address // Nested struct
+}
+
+func main() {
+	person := Person{
+		Name:    "John",
+		Age:     46,
+		Address: Address{
+			Street:  "Durian Street",
+			City:    "Bandung",
+			Country: "Indonesia",
+		},
+	}
+
+	jsonBytes, err := json.Marshal(person)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(string(jsonBytes)) // Output: {"Name":"John","Age":46,"Address":{"Street":"Durian Street","City":"Bandung","Country":"Indonesia"}}
+}
+```
+
+Pada contoh di atas, kita bisa lihat ada tipe `Address` dan tipe `Person`. Tipe `Address` dijadikan sebagai _nested struct_ dalam tipe `Person`. Jika objek dengan tipe `Person` di-_marshal_, maka hasilnya jadi seperti di bawah ini.
+
+```json
+{
+  "Name": "John",
+  "Age": 46,
+  "Address": {
+    "Street": "Durian Street",
+    "City": "Bandung",
+    "Country": "Indonesia"
+  }
+}
+```
+
+Sekarang kita akan coba _marshal_ `struct` yang memiliki _embedded struct_ di dalamnya.
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type Address struct {
+	Street  string
+	City    string
+	Country string
+}
+
+type Person struct {
+	Name    string
+	Age     int
+	Address // Embedded struct
+}
+
+func main() {
+	person := Person{
+		Name:    "John",
+		Age:     46,
+		Address: Address{
+			Street:  "Durian Street",
+			City:    "Bandung",
+			Country: "Indonesia",
+		},
+	}
+
+	jsonBytes, err := json.Marshal(person)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(string(jsonBytes)) // Output: {"Name":"John","Age":46,"Street":"Durian Street","City":"Bandung","Country":"Indonesia"}
+}
+```
+
+Pada contoh di atas, kita bisa lihat ada tipe `Address` dan tipe `Person`, sama seperti sebelumnya. Tapi kali ini tipe `Address` dijadikan sebagai _embedded struct_ dalam tipe `Person`. Jika objek dengan tipe `Person` di-_marshal_, maka hasilnya jadi seperti di bawah ini.
+
+```json
+{
+  "Name": "John",
+  "Age": 46,
+  "Street": "Durian Street",
+  "City": "Bandung",
+  "Country": "Indonesia"
+}
+```
+
+Perhatikan bahwa jika tipe `Address` di-_embed_, maka semua _field_ dari tipe `Address` berada langsung di dalam objek bertipe `Person`.
+
+## Unmarshaling
+
+_Unmarshaling_ adalah proses mengubah serangkaian _byte_ (contoh format: JSON), menjadi struktur data Go. Dua contoh di bawah menunjukkan cara _unmarshal_ `struct` yang di dalamnya ada _nested struct_ dan `struct` yang di dalamnya ada _embedded struct_.
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type Address struct {
+	Street  string
+	City    string
+	Country string
+}
+
+type Person struct {
+	Name    string
+	Age     int
+	Address Address // Nested struct
+}
+
+func main() {
+	jsonBytes := []byte(`{"Name":"John","Age":46,"Address":{"Street":"Durian Street","City":"Bandung","Country":"Indonesia"}}`)
+	var person Person
+
+	err := json.Unmarshal(jsonBytes, &person)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Printf("%+v\n", person) // Output: {Name:John Age:46 Address:{Street:Durian Street City:Bandung Country:Indonesia}}
+}
+```
+
+Untuk bisa memetakan JSON ke _struct_ yang di dalamnya ada _nested struct_, maka JSON harus memiliki _field_ yang sesuai dengan _field_ dari _struct_ tempat menyimpan hasil _unmarshal_. _String_ JSON pada contoh di atas memiliki _field_ `Name`, `Age`, dan `Address`. Lalu _value_ dari _field_ `Address` adalah objek yang memiliki _field_ `Street`, `City`, dan `Country`. Itu sesuai dengan tempat untuk menyimpan hasil _unmarshal_, yaitu di variabel `person` yang bertipe `Person`.
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type Address struct {
+	Street  string
+	City    string
+	Country string
+}
+
+type Person struct {
+	Name    string
+	Age     int
+	Address // Embedded struct
+}
+
+func main() {
+	jsonBytes := []byte(`{"Name":"John","Age":46,"Street":"Durian Street","City":"Bandung","Country":"Indonesia"}`)
+	var person Person
+
+	err := json.Unmarshal(jsonBytes, &person)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Printf("%+v\n", person) // Output: {Name:John Age:46 Address:{Street:Durian Street City:Bandung Country:Indonesia}}
+}
+```
+
+Berbeda dari sebelumnya, _string_ JSON kali ini tidak memiliki _field_ `Address`. _Field_ `Street`, `City`, dan `Country` bukan berada pada objek yang menjadi _value_ dari _field_ `Address`.
+
+Hasil _unmarshal_ _string_ JSON tersebut, dapat disimpan pada variabel `person` bertipe `Person`. Tipe `Person` adalah `struct` yang memiliki `Address` sebagai _embedded struct_ di dalamnya. Karena tipe `Address` di-_embed_ langsung ke dalam tipe `Person`, maka semua _field_ dalam tipe `Address` diberikan kepada tipe `Person`. Ini membuat tipe `Person` dianggap memiliki _field_ `Street`, `City`, dan `Country` langsung di dalamnya.
