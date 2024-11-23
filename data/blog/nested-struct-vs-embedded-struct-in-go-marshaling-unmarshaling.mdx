@@ -2,12 +2,12 @@
 title: 'Nested Struct vs Embedded Struct di Go: Marshaling dan Unmarshaling - Part 2'
 author: 'Annisa Nadia'
 createdAt: '2024-11-19'
-updatedAt: '2024-11-21'
-summary: 'Dalam bahasa Go, kita dapat merepresentasikan objek yang lebih kompleks dengan membuat struct yang dibentuk dari struct lain, dengan cara nested maupun embedded. Pada artikel ini dibahas perbedaan hasil dari proses marshal dan umarshal suatu struct yang memiliki nested struct dan embedded struct.'
+updatedAt: '2024-11-23'
+summary: 'Dalam bahasa Go, kita dapat merepresentasikan objek yang lebih kompleks dengan membuat struct yang dibentuk dari struct lain, dengan cara nested maupun embedded. Pada artikel ini dibahas perbedaan hasil dari proses marshal dan unmarshal suatu struct yang memiliki nested struct dan embedded struct.'
 image: 'wooden-blocks.jpg'
 ---
 
-Pada artikel sebelumnya, kita telah membahas perbedaan utama antara _nested struct_ dengan _embedded struct_. Sekarang kita akan coba lihat perbedaan hasil dari proses _marshal_ dan _umarshal_ `struct` yang di dalamnya memiliki _nested struct_ dan _embedded struct_. Kita juga akan melihat beberapa keunikan yang mungkin terjadi jika `struct` tersebut di-_marshal_ atau di-_unmarshal_.
+Pada artikel sebelumnya, kita telah membahas perbedaan utama antara _nested struct_ dengan _embedded struct_. Sekarang kita akan coba lihat perbedaan hasil dari proses _marshal_ dan _unmarshal_ `struct` yang di dalamnya memiliki _nested struct_ dan _embedded struct_. Kita juga akan melihat beberapa keunikan yang mungkin terjadi jika `struct` tersebut di-_marshal_ atau di-_unmarshal_.
 
 ## _Marshaling_
 
@@ -288,7 +288,9 @@ func main() {
 }
 ```
 
-Untuk bisa memetakan JSON ke _struct_ yang di dalamnya ada _nested struct_, maka JSON harus memiliki _field_ yang sesuai dengan _field_ dari _struct_ tempat menyimpan hasil _unmarshal_. _String_ JSON pada contoh di atas memiliki _field_ `Name`, `Age`, dan `Address`. Lalu _value_ dari _field_ `Address` adalah objek yang memiliki _field_ `Street`, `City`, dan `Country`. Itu sesuai dengan tempat untuk menyimpan hasil _unmarshal_, yaitu di variabel `person` yang bertipe `Person`.
+Untuk bisa memetakan JSON ke `struct` yang di dalamnya ada _nested struct_, maka JSON harus memiliki _field_ yang sesuai dengan _field_ dari `struct` tempat menyimpan hasil _unmarshal_. _String_ JSON pada contoh di atas memiliki _field_ `Name`, `Age`, dan `Address`. Lalu _value_ dari _field_ `Address` adalah objek yang memiliki _field_ `Street`, `City`, dan `Country`. Itu sesuai dengan tempat untuk menyimpan hasil _unmarshal_, yaitu di variabel `person` yang bertipe `Person`.
+
+Sekarang, perhatikan contoh selanjutnya.
 
 ```go
 package main
@@ -373,11 +375,11 @@ Sama seperti pada contoh _marshaling_, hal itu terjadi karena _field_ `Country` 
 
 ### Gimana Kalau Ada Nama _Field_ yang Sama di Tingkatan yang Sama?
 
-Kali ini kita juga akan melakukan _unmarshal_ suatu `struct` yang di dalamnya terdapat _embedded struct_. Tapi kali ini nama _field_ yang sama berada pada tingkatan yang sama.
+Kita akan melakukan _unmarshal_ suatu `struct` yang di dalamnya terdapat _embedded struct_. Tapi kali ini nama _field_ yang sama berada pada tingkatan yang sama.
 
 Pada contoh di bawah ada tipe `Address`, tipe `Birthplace`, dan tipe `Person`. Tipe `Address` dan tipe `Birthplace` di-_embed_ ke dalam tipe `Person`. Perhatikan bahwa tipe `Address` dan tipe `Birthplace` sama-sama memiliki _field_ `City`.
 
-Kita akan melakukan _unmarshal_ terhadap JSON yang memiliki _field_ `Name`, `Age`, `Street`, `City`, dan `Country`. Kira-kira _value_ _field_ `City` di JSON akan disimpan di _field_ `City` tipe `Address` atau tipe `Birthplace` ya?
+Kita akan melakukan _unmarshal_ terhadap JSON yang memiliki _field_ `Name`, `Age`, `Street`, `City`, dan `Country`. Kira-kira _value_ _field_ `City` di JSON akan disimpan di _field_ `City` tipe `Address` atau tipe `Birthplace`, ya?
 
 ```go
 package main
@@ -494,3 +496,9 @@ func main() {
 	fmt.Printf("%+v\n", person) // Output: {PersonBase:{Name:John Age:46} Address:{Street:Durian Street City:Bandung} Birthplace:{City:Bandung Country:Indonesia}}
 }
 ```
+
+Pada kode di atas, kita bisa lihat _field_ `Name` dan _field_ `Age` dipindahkan ke tipe `PersonBase`. Lalu tipe `PersonBase` di-_embed_ ke dalam tipe `Person`. Sekarang tipe `Person` memiliki 3 _embedded struct_, yaitu `PersonBase`, `Address`, dan `Birthplace`.
+
+Selanjutnya, kita buat tipe `Person` mengimplementasikan _interface_ [`Unmarshaler`](https://pkg.go.dev/encoding/json#Unmarshaler). Suatu tipe dianggap mengimplementasikan _interface_ [`Unmarshaler`](https://pkg.go.dev/encoding/json#Unmarshaler) kalau tipe itu memiliki _method_ `UnmarshalJSON()`.
+
+Karena tipe `Person` sekarang memiliki _method_ `UnmarshalJSON()`, _method_ tersebut akan dieksekusi ketika melakukan _unmarshal_ suatu JSON. Cara yang dilakukan untuk dapat mengambil _value_ _field_ `City` pada JSON adalah dengan melakukan _unmarshal_ satu per satu untuk setiap _embedded struct_ di dalam tipe `Person`. Pada hasil _print_ variabel `person` terlihat _field_ `City` pada tipe `Address` dan _field_ `City` pada tipe `Birthplace` memiliki _value_ `"Bandung"`.
