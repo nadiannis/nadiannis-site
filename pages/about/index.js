@@ -26,43 +26,40 @@ export default function AboutPage() {
             </h1>
             <div>
               <p className="mb-5">
-                Hi, I&apos;m Nadia. I&apos;m a computer science student at
-                Diponegoro University, who aspires to be a software developer. I
-                like creating things, especially things that can be created with
-                a computer. I interact a lot with computers.
+                Hi, I&apos;m Nadia. I love creating things. I find joy in
+                creating and refining things along the way. I especially love
+                creating with a computer. It gives me the freedom to create
+                anytime, anywhere, and turn ideas into something real in ways
+                that wouldn&apos;t be possible otherwise.
               </p>
               <p className="mb-5">
-                Creating things that can make a difference in people&apos;s
-                lives is my mission. Self-awareness and constant learning are
-                tools that help me grow. I enjoy learning from books, articles,
-                videos, podcasts, and people in communities.
-              </p>
-              <p className="mb-5">
-                Combining the art of design with the science of programming has
-                been fascinating to me. I like to turn ideas into great-looking
-                usable apps. But I also enjoy dealing with behind-the-scenes
-                processes in apps. My goal is to create production-ready apps
-                that solve problems.
-              </p>
-              <p className="mb-5">
-                I was born in Jakarta, grew up in Bekasi, and went to school to
-                learn computer science in Semarang, Indonesia. Apart from
-                programming, I spend my spare time reading,{' '}
-                <Link href="/blog">
-                  <a href="/blog" className="link">
-                    writing
+                I&apos;m on a journey to get better at digital product creation.
+                I want to build things that are not only functional but also
+                meaningful. You can find some of my projects{' '}
+                <Link href="/projects">
+                  <a href="/projects" className="link">
+                    here
                   </a>
                 </Link>
-                , watching YouTube videos, listening to podcasts, and{' '}
-                <a
-                  href="https://open.spotify.com/playlist/4mzMdEtWIaKrn1tSVWeV0U"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="link"
-                >
-                  finding music that I like
-                </a>
                 .
+              </p>
+              <p className="mb-5">
+                Apart from creating digital products, I spend my spare time
+                reading, making sense of life, and learning more about myself. I
+                also enjoy writing to clarify my thoughts and actively learn.
+                While I keep most of my writing private,{' '}
+                <Link href="/blog">
+                  <a href="/blog" className="link">
+                    a few pieces are available online
+                  </a>
+                </Link>
+                .
+              </p>
+              <p className="mb-5">
+                I was born and currently live in Indonesia. If you resonate with
+                any of this, feel free to reach out. I&apos;m open to meaningful
+                conversations, collaborations, or just connecting with
+                like-minded people.
               </p>
             </div>
 
@@ -81,6 +78,51 @@ export default function AboutPage() {
               </h2>
               <div className="mb-8">
                 <BadgeList data={interestsData} />
+              </div>
+            </div>
+
+            <div className="mt-12">
+              <h2 className="mb-5 text-xl border-b dark:border-gray-800">
+                Want to Work with Me?
+              </h2>
+              <div className="mb-8">
+                <p className="mb-5">
+                  I&apos;m available to help you{' '}
+                  <strong>design and implement databases</strong>,{' '}
+                  <strong>architect and develop web apps or APIs</strong>, or{' '}
+                  <strong>review your code</strong>. I can adapt to any tools,
+                  but you&apos;ll find that I work best with <strong>Go</strong>
+                  , <strong>SQL</strong>, <strong>PostgreSQL</strong>, and{' '}
+                  <strong>MySQL</strong>.
+                </p>
+                <p className="mb-5">
+                  I primarily speak Bahasa Indonesia, but I can also communicate
+                  in English well enough to be understood. If you&apos;re not
+                  located in Jakarta, Indonesia, I&apos;m happy to work remotely
+                  with you.
+                </p>
+                <p className="mb-5">
+                  If you have an exciting project, role, problem, or idea to
+                  share, feel free to send me an{' '}
+                  <a
+                    href="mailto:annisanadianeyla@gmail.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="link"
+                  >
+                    email
+                  </a>{' '}
+                  or reach out to me on{' '}
+                  <a
+                    href="https://www.linkedin.com/in/nadiannis"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="link"
+                  >
+                    LinkedIn
+                  </a>
+                  .
+                </p>
               </div>
             </div>
           </div>
